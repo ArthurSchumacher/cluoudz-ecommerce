@@ -1,7 +1,7 @@
 "use client";
 
 import { paths } from "@/paths";
-import { Button } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import CategoriesList from "./CategoriesList";
@@ -43,13 +43,9 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
         }}
         isIconOnly
         variant="flat"
-        className="bg-transparent text-neutral-50"
+        className="bg-transparent text-neutral-50 sm:hidden block"
       >
-        {open ? (
-          <FaTimes size={20} className="sm:hidden block" />
-        ) : (
-          <FaBars size={20} className="sm:hidden block" />
-        )}
+        {open ? <FaTimes size={20} /> : <FaBars size={20} />}
       </Button>
       <div
         className={`fixed top-0 w-full h-dvh z-10 bg-neutral-950/25 transition-all duration-1000 ease-in ${
@@ -57,13 +53,13 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
         }`}
       >
         <div ref={node} className={`w-[90%] h-dvh bg-neutral-100 p-4`}>
-          <h1 className="text-fuchsia-950 text-md antialiased pb-2">Páginas</h1>
+          <h1 className="text-primary text-md antialiased pb-2">Páginas</h1>
           <hr />
           <ul>
             {links.map((link, index) => {
               return (
                 <li key={index} className="text-neutral-700 antialiased py-2">
-                  {link.name}
+                  <Link href={link.path}>{link.name}</Link>
                 </li>
               );
             })}

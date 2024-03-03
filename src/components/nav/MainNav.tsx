@@ -5,6 +5,7 @@ import { FiUser } from "react-icons/fi";
 import Container from "../Container";
 import NavbarMenuModal from "./NavbarMenuModal";
 import { Category } from "@/types/category";
+import { paths } from "@/paths";
 
 interface MainNavProps {
   categories: Category[];
@@ -12,18 +13,21 @@ interface MainNavProps {
 
 function MainNav({ categories }: MainNavProps) {
   return (
-    <nav className="w-full sm:py-10 py-2 bg-fuchsia-950 text-neutral-50">
+    <nav className="w-full sm:py-10 py-2 bg-primary text-neutral-50">
       <Container>
         <div className="flex flex-row items-center justify-between gap-x-8">
           <div className="flex-shrink flex flex-row items-center justify-center gap-x-2">
             <NavbarMenuModal categories={categories} />
-            <p className="sm:text-5xl text-2xl font-bold text-neutral-50 antialiased">
+            <Link
+              href={paths.home()}
+              className="sm:text-5xl text-2xl font-bold text-neutral-50 antialiased"
+            >
               SEXS
-            </p>
+            </Link>
           </div>
           <div className="flex-grow sm:block hidden max-w-screen-md">
             <Input
-              startContent={<FaSearch className="text-fuchsia-950" />}
+              startContent={<FaSearch className="text-primary" />}
               placeholder="Hoje você precisa de um(a)..."
               className="w-full"
               size="sm"

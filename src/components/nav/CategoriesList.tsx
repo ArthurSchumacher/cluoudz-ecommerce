@@ -10,9 +10,7 @@ interface CategoriesListProps {
 function CategoriesList({ categories }: CategoriesListProps) {
   return (
     <>
-      <h2 className="text-fuchsia-950 text-md antialiased pb-2 pt-4">
-        Categorias
-      </h2>
+      <h2 className="text-primary text-md antialiased pb-2 pt-4">Categorias</h2>
       <hr />
       <ul>
         {categories.map((category) => {
