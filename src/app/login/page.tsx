@@ -7,7 +7,7 @@ import React from "react";
 
 function SignInPage() {
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-24 text-neutral-100">
       <Container>
         <h1 className="sm:text-3xl text-xl font-light text-neutral-900 pb-6">
           Acessar ou criar conta

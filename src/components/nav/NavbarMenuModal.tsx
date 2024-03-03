@@ -48,11 +48,11 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
         {open ? <FaTimes size={20} /> : <FaBars size={20} />}
       </Button>
       <div
-        className={`fixed top-0 w-full h-dvh z-10 bg-neutral-950/25 transition-all duration-1000 ease-in ${
+        className={`fixed top-0 w-full h-dvh z-40 bg-neutral-950/25 transition-all duration-1000 ease-in ${
           open ? "left-0 opacity-100" : "left-[-100%] opacity-0"
         }`}
       >
-        <div ref={node} className={`w-[90%] h-dvh bg-neutral-100 p-4`}>
+        <div ref={node} className={`w-[90%] h-dvh bg-neutral-100 p-4 z-50`}>
           <h1 className="text-primary text-md antialiased pb-2">Páginas</h1>
           <hr />
           <ul>

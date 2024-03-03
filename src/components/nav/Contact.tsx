@@ -1,10 +1,10 @@
 import { Link } from "@nextui-org/react";
-import React from "react";
+import React, { Suspense } from "react";
 import Container from "../Container";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FiUser } from "react-icons/fi";
-import { paths } from "@/paths";
+import AuthHeader from "./AuthHeader";
 
 function Contact() {
   return (
@@ -28,23 +28,9 @@ function Contact() {
             </Link>
           </div>
           <div className="flex flex-row gap-4 items-center justify-center py-2">
-            <FiUser size={20} className="text-neutral-50" />
-            <p className="text-neutral-50 antialiased uppercase font-bold">
-              Bem vindo visitante,{" "}
-              <Link
-                href={paths.signUp()}
-                className="text-neutral-50 antialiased border-b border-b-transparent hover:border-b-neutral-50"
-              >
-                cadastre-se
-              </Link>{" "}
-              ou{" "}
-              <Link
-                href={paths.signIn()}
-                className="text-neutral-50 antialiased border-b border-b-transparent hover:border-b-neutral-50"
-              >
-                faça seu login
-              </Link>
-            </p>
+            <Suspense>
+              <AuthHeader />
+            </Suspense>
           </div>
         </div>
       </Container>
