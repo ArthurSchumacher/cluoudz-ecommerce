@@ -8,6 +8,12 @@ export const paths = {
   contact() {
     return "/contato";
   },
+  polices() {
+    return "/politica";
+  },
+  faq() {
+    return "/faq";
+  },
   profile() {
     return `/perfil`;
   },
