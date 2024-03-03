@@ -1,12 +1,14 @@
 import React from "react";
 import Contact from "./Contact";
 import MainNav from "./MainNav";
+import * as queries from "@/queries";
 
-function Header() {
+async function Header() {
+  const categories = await queries.allCategories();
   return (
     <header>
       <Contact />
-      <MainNav />
+      <MainNav categories={categories} />
       <div></div>
     </header>
   );

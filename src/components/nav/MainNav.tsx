@@ -4,14 +4,19 @@ import { FaBars, FaRegHeart, FaSearch, FaShoppingBag } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import Container from "../Container";
 import NavbarMenuModal from "./NavbarMenuModal";
+import { Category } from "@/types/category";
 
-function MainNav() {
+interface MainNavProps {
+  categories: Category[];
+}
+
+function MainNav({ categories }: MainNavProps) {
   return (
     <nav className="w-full sm:py-10 py-2 bg-fuchsia-950 text-neutral-50">
       <Container>
         <div className="flex flex-row items-center justify-between gap-x-8">
           <div className="flex-shrink flex flex-row items-center justify-center gap-x-2">
-            <NavbarMenuModal />
+            <NavbarMenuModal categories={categories} />
             <p className="sm:text-5xl text-2xl font-bold text-neutral-50 antialiased">
               SEXS
             </p>

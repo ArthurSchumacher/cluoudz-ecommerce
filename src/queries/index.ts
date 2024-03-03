@@ -1,0 +1,1 @@
+export { allCategories } from "./category";
