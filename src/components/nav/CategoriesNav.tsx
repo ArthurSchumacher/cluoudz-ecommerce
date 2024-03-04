@@ -1,6 +1,6 @@
 import { Category } from "@/types/category";
 import React from "react";
-import Container from "../Container";
+import Container from "../common/Container";
 import Link from "next/link";
 
 interface CategoriesNavProps {

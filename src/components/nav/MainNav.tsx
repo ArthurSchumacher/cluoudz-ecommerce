@@ -2,7 +2,7 @@ import { Button, Input } from "@nextui-org/react";
 import Link from "next/link";
 import { FaBars, FaRegHeart, FaSearch, FaShoppingBag } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
-import Container from "../Container";
+import Container from "../common/Container";
 import NavbarMenuModal from "./NavbarMenuModal";
 import { Category } from "@/types/category";
 import { paths } from "@/paths";
@@ -22,7 +22,7 @@ function MainNav({ categories }: MainNavProps) {
               href={paths.home()}
               className="sm:text-5xl text-2xl font-bold text-neutral-50 antialiased"
             >
-              SEXS
+              {`SEX'S`}
             </Link>
           </div>
           <div className="flex-grow sm:block hidden max-w-screen-md">

@@ -18,9 +18,9 @@ export const paths = {
     return `/perfil`;
   },
   signIn() {
-    return "/login";
+    return "/auth/login";
   },
   signUp() {
-    return "/cadastro";
+    return "/auth/cadastro";
   },
 };

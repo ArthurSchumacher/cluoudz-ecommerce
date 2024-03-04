@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Container";
+import Container from "../common/Container";
 import FooterList from "./FooterList";
 import * as queries from "@/queries";
 import { Link } from "@nextui-org/react";

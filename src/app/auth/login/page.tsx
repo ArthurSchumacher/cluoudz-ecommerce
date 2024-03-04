@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import SignInForm from "@/components/SignInForm";
 import { paths } from "@/paths";
 import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
@@ -7,7 +7,7 @@ import React from "react";
 
 function SignInPage() {
   return (
-    <section className="w-full py-24 text-neutral-100">
+    <section className="w-full py-16 text-neutral-100">
       <Container>
         <h1 className="sm:text-3xl text-xl font-light text-neutral-900 pb-6">
           Acessar ou criar conta

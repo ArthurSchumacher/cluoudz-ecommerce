@@ -1,11 +1,11 @@
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import SignUpForm from "@/components/SignUpForm";
 import { Card, CardHeader, CardBody } from "@nextui-org/react";
 import React from "react";
 
 function SignUpPage() {
   return (
-    <section className="w-full py-24 text-neutral-100">
+    <section className="w-full py-16 text-neutral-100">
       <Container>
         <div className="flex flex-col sm:flex-row gap-14">
           <div className="w-full sm:w-1/2">
