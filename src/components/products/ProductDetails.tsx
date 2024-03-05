@@ -1,7 +1,7 @@
 "use client";
 
 import { SingleProduct } from "@/types/product";
-import { SyntheticEvent, useCallback, useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { Button, Link } from "@nextui-org/react";
 import ProductImage from "./ProductImage";
 import * as actions from "@/actions";
@@ -60,7 +60,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
       console.log(addItemToCartDto);
       handleAddProductToCart(+product.id);
-      await actions.addToCart(addItemToCartDto).catch((e) => {
+      await actions.addToCart(addItemToCartDto).catch((e: any) => {
         toast.error(`Erro: ${e.message}`);
       });
       toast.success("Item adicionado ao carrinho com sucesso.");
