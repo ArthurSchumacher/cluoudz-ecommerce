@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import Header from "@/components/nav/Header";
 import Footer from "@/components/footer/Footer";
 import Breadcrumb from "@/components/common/Breadcrumbs";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,6 +30,16 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            duration: 5000,
+            style: {
+              background: "#4a044e",
+              color: "#fff",
+            },
+          }}
+        />
       </body>
     </html>
   );

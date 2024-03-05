@@ -16,7 +16,7 @@ function CategoriesNav({ categories }: CategoriesNavProps) {
             return (
               <div
                 key={category.id}
-                className="hover:bg-primary p-4 cursor-pointer"
+                className="hover:bg-primary hover:rounded-b-2xl p-4 cursor-pointer"
               >
                 <Link
                   href={`/?category=${category.id}`}

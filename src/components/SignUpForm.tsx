@@ -68,7 +68,7 @@ export default function SignUpForm() {
           tos: undefined,
         };
 
-        await actions.createUser(userDto);
+        await actions.signUp(userDto);
         router.replace(paths.signIn());
       }
     } catch (error) {

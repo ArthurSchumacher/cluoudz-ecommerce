@@ -9,7 +9,7 @@ export default function Breadcrumb() {
   const currentPath = usePathname();
   return (
     <Container>
-      <div className="flex items-center pt-16">
+      <div className="flex items-center py-16">
         <Breadcrumbs>
           {currentPath.includes(paths.home()) ? (
             <BreadcrumbItem href={paths.home()}>

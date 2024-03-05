@@ -6,6 +6,7 @@ import Container from "../common/Container";
 import NavbarMenuModal from "./NavbarMenuModal";
 import { Category } from "@/types/category";
 import { paths } from "@/paths";
+import ShoppingBag from "./ShoppingBag";
 
 interface MainNavProps {
   categories: Category[];
@@ -56,17 +57,7 @@ function MainNav({ categories }: MainNavProps) {
               <FaRegHeart size={40} className="sm:block hidden" />
               <FaRegHeart size={20} className="sm:hidden block" />
             </Button>
-            <Button
-              size="lg"
-              isIconOnly
-              as={Link}
-              href="#"
-              variant="flat"
-              className="bg-transparent text-neutral-50"
-            >
-              <FaShoppingBag size={40} className="sm:block hidden" />
-              <FaShoppingBag size={20} className="sm:hidden block" />
-            </Button>
+            <ShoppingBag />
           </div>
         </div>
       </Container>

@@ -10,3 +10,17 @@ export type Product = {
     name: string;
   };
 };
+
+export type SingleProduct = {
+  id: string;
+  name: string;
+  price: number;
+  stock: number;
+  sale: boolean;
+  discount: number;
+  description: string;
+  image: string;
+  category: {
+    name: string;
+  };
+};

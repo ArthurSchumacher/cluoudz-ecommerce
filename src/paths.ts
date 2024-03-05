@@ -14,13 +14,16 @@ export const paths = {
   faq() {
     return "/faq";
   },
+  cart() {
+    return "/carrinho";
+  },
   profile() {
     return `/perfil`;
   },
   signIn() {
-    return "/auth/login";
+    return "/login";
   },
   signUp() {
-    return "/auth/cadastro";
+    return "/cadastro";
   },
 };
