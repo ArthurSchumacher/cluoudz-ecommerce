@@ -1,3 +1,4 @@
+import { AddItemToCartDto } from "@/types/cart";
 import {
   createContext,
   useCallback,
@@ -7,8 +8,9 @@ import {
 } from "react";
 
 type CartContextType = {
-  cartProducts: number[] | null;
-  handleAddProductToCart: (product: number) => void;
+  cartTotalQuantity: number;
+  cartProducts: AddItemToCartDto[] | null;
+  handleAddProductToCart: (product: AddItemToCartDto) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -18,31 +20,39 @@ interface Props {
 }
 
 export const CartContextProvider = (props: Props) => {
-  const [cartProducts, setCartProducts] = useState<number[] | null>(null);
+  const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+  const [cartProducts, setCartProducts] = useState<AddItemToCartDto[] | null>(
+    null
+  );
 
   useEffect(() => {
     const cartItems: any = localStorage.getItem("CartItems");
-    const cProducts: number[] | null = JSON.parse(cartItems);
+    const cProducts: AddItemToCartDto[] | null = JSON.parse(cartItems);
 
     setCartProducts(cProducts);
   }, []);
 
-  const handleAddProductToCart = useCallback((product: number) => {
-    setCartProducts((prev) => {
-      let updatedCart;
+  const handleAddProductToCart = useCallback(
+    (product: AddItemToCartDto) => {
+      setCartProducts((prev) => {
+        let updatedCart;
 
-      if (prev) {
-        updatedCart = [...prev, product];
-      } else {
-        updatedCart = [product];
-      }
+        if (prev) {
+          updatedCart = [...prev, product];
+        } else {
+          updatedCart = [product];
+        }
 
-      localStorage.setItem("CartItems", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
-  }, []);
+        localStorage.setItem("CartItems", JSON.stringify(updatedCart));
+        return updatedCart;
+      });
+      setCartTotalQuantity(cartTotalQuantity + 1);
+    },
+    [cartTotalQuantity]
+  );
 
   const value = {
+    cartTotalQuantity,
     cartProducts,
     handleAddProductToCart,
   };

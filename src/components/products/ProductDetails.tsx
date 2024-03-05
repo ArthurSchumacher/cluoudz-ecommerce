@@ -11,18 +11,26 @@ import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
 import { paths } from "@/paths";
+import { useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
 interface ProductDetailsProps {
   product: SingleProduct;
 }
 
 const Horizontal = () => {
-  return <hr className="w-[30%] my-2" />;
+  return <span className="w-[30%] h-[1.5px] bg-neutral-300 my-2" />;
 };
 
 function ProductDetails({ product }: ProductDetailsProps) {
+  const session = useSession();
+  const router = useRouter();
   const { handleAddProductToCart, cartProducts } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [cartProduct, setCartProduct] = useState<AddItemToCartDto>({
+    productId: +product.id,
+    amount: quantity,
+  });
   const [isProductInCart, setIsProductInCart] = useState(false);
 
   useEffect(() => {
@@ -30,14 +38,14 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
     if (cartProducts) {
       const existingIndex = cartProducts.findIndex(
-        (item) => item === +product.id
+        (item) => item.productId === cartProduct.productId
       );
 
       if (existingIndex > -1) {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts, product]);
+  }, [cartProducts, cartProduct]);
 
   const handleQtyIncrease = () => {
     if (quantity >= product.stock) return;
@@ -51,22 +59,21 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    const addItemToCartDto: AddItemToCartDto = {
+      productId: +product.id,
+      amount: quantity,
+    };
 
-    try {
-      const addItemToCartDto: AddItemToCartDto = {
-        productId: +product.id,
-        amount: quantity,
-      };
-
-      console.log(addItemToCartDto);
-      handleAddProductToCart(+product.id);
-      await actions.addToCart(addItemToCartDto).catch((e: any) => {
-        toast.error(`Erro: ${e.message}`);
-      });
-      toast.success("Item adicionado ao carrinho com sucesso.");
-    } catch (error: any) {
-      toast.error(`Erro: ${error.message}`);
+    if (session.status === "unauthenticated") {
+      return router.push(paths.signIn());
     }
+
+    setCartProduct(addItemToCartDto);
+    handleAddProductToCart(addItemToCartDto);
+    await actions.addToCart(addItemToCartDto).catch((error) => {
+      return toast.error("Falha ao adicionar item ao carrinho.");
+    });
+    toast.success("Item adicionado ao carrinho com sucesso.");
   };
 
   return (
@@ -109,7 +116,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
           <>
             <p className="mb-2 text-neutral-700 antialiased gap-2 inline-flex items-center">
               <MdCheckCircle className="text-green-400" size={20} />
-              <span>Product added to cart</span>
+              <span>Produto adicionado ao carrinho.</span>
             </p>
             <div className="max-w-[30%]">
               <Button
@@ -127,29 +134,27 @@ function ProductDetails({ product }: ProductDetailsProps) {
           </>
         ) : (
           <>
-            <form onSubmit={handleSubmit}>
-              <SetQuantity
-                cartCounter
-                quantity={quantity}
-                minValue={1}
-                maxValue={product.stock}
-                setQuantity={setQuantity}
-                handleQuantityDecrease={handleQtyDecrease}
-                handleQuantityIncrease={handleQtyIncrease}
-              />
-              <Horizontal />
-              <div className="max-w-[30%]">
-                <Button
-                  type="submit"
-                  size="lg"
-                  radius="sm"
-                  color="secondary"
-                  variant="solid"
-                >
-                  Adicionar ao carrinho
-                </Button>
-              </div>
-            </form>
+            <SetQuantity
+              cartCounter
+              quantity={quantity}
+              minValue={1}
+              maxValue={product.stock}
+              setQuantity={setQuantity}
+              handleQuantityDecrease={handleQtyDecrease}
+              handleQuantityIncrease={handleQtyIncrease}
+            />
+            <Horizontal />
+            <div className="max-w-[30%]">
+              <Button
+                onClick={handleSubmit}
+                size="lg"
+                radius="sm"
+                color="secondary"
+                variant="solid"
+              >
+                Adicionar ao carrinho
+              </Button>
+            </div>
           </>
         )}
       </div>

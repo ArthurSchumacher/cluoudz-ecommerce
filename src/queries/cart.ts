@@ -2,8 +2,6 @@
 
 import { nextAuthOptions } from "@/auth";
 import { Cart } from "@/types/cart";
-import { Category } from "@/types/category";
-import axios from "axios";
 import { getServerSession } from "next-auth";
 
 export async function userCart(): Promise<Cart> {

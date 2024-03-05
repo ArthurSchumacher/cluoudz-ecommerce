@@ -44,7 +44,7 @@ export default function SignInForm() {
       });
 
       if (result?.ok) {
-        router.replace(paths.home());
+        router.back();
       }
 
       if (!result?.ok) {

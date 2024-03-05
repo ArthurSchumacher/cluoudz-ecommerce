@@ -35,6 +35,9 @@ const nextAuthOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: paths.signIn(),
+    signOut: paths.signIn(),
+    error: paths.signIn(),
+    newUser: paths.home(),
   },
   callbacks: {
     async jwt({ token, user }) {

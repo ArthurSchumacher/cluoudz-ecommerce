@@ -20,10 +20,10 @@ function ProductCard({ product }: ProductCardProps) {
     >
       <div className="flex flex-col items-center w-full gap-1">
         <div className="aspect-square overflow-hidden relative w-full mb-4">
-          <div className="absolute top-0 left-0 bg-secondary p-2 rounded-md z-10 uppercase">
-            <p className="inline-flex items-center justify-center gap-1 text-neutral-50">
+          <div className="absolute top-0 left-0 bg-secondary p-1 sm:p-2 rounded-md z-30 uppercase">
+            <p className="inline-flex items-center justify-center gap-1 text-neutral-50 text-xs sm:text-base">
               <FaFire size={12} />
-              Desconto!
+              Promoção!
             </p>
           </div>
           <Image
@@ -38,7 +38,7 @@ function ProductCard({ product }: ProductCardProps) {
           </p>
         </div>
         <div className="self-start text-start py-1">
-          <p className="text-neutral-950 antialiased text-base">
+          <p className="text-neutral-950 antialiased text-sm sm:text-base">
             {truncateText(product.name)}
           </p>
         </div>

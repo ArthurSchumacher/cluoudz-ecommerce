@@ -1,3 +1,3 @@
-export { signUp } from "@/actions/user/sign-up";
+export { signUp } from "../actions/user/sign-up";
 
-export { addToCart } from "@/actions/cart/add-to-cart";
+export { addToCart } from "../actions/cart/add-to-cart";
