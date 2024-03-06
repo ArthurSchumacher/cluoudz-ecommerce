@@ -65,9 +65,9 @@ function CartClient({ products }: CartClientProps) {
     <div className="pb-16">
       <Title label="Meu carrinho" isUpperCase={false} />
       <div className="grid grid-cols-5 text-xs gap-4 pb-2 items-center">
-        <p className="col-span-2 justify-self-start">Product</p>
-        <p className="justify-self-center">Price</p>
-        <p className="justify-self-center">Quantity</p>
+        <p className="col-span-2 justify-self-start">Produto</p>
+        <p className="justify-self-center">Preço</p>
+        <p className="justify-self-center">Quantidade</p>
         <p className="justify-self-end">Total</p>
       </div>
       <div>
