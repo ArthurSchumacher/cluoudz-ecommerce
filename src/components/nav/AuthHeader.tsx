@@ -21,7 +21,14 @@ function AuthHeader() {
       <>
         <FiUser size={20} className="text-neutral-50" />
         <p className="text-neutral-50 antialiased uppercase font-bold">
-          Bem vindo {session.data.user.name}, <LogoutButton />
+          Bem vindo{" "}
+          <Link
+            href={paths.profile()}
+            className="text-neutral-50 antialiased uppercase border-b border-b-transparent hover:border-b-neutral-50"
+          >
+            {session.data.user.name}
+          </Link>
+          , <LogoutButton />
         </p>
       </>
     );

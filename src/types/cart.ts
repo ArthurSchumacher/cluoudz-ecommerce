@@ -11,6 +11,7 @@ export type Cart = {
 export type ProductToCartDto = {
   productId: number;
   amount: number;
+  price?: number;
 };
 
 export type SingleCart = {

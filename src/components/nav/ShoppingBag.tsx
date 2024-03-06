@@ -11,7 +11,7 @@ function ShoppingBag() {
 
   return (
     <div className="relative">
-      <p className="absolute bottom-0 right-0 bg-secondary rounded-full px-2 py-1 z-10 text-xs">
+      <p className="absolute bottom-0 right-0 bg-secondary rounded-full w-6 h-6 flex items-center justify-center z-10 text-sm">
         {cartTotalQuantity}
       </p>
       <Button

@@ -19,7 +19,7 @@ function SetQuantity({
   return (
     <div className="flex gap-4 items-center">
       {cartCounter ? <p className="text-base font-bold">Quantidade:</p> : null}
-      <div className="flex gap-4 items-center text-base border border-neutral-400 bg-neutral-200 p-2 rounded-md hover:border-neutral-700">
+      <div className="flex gap-4 items-center justify-center max-w-[95px] text-base border border-neutral-400 bg-neutral-200 sm:p-2 p-1 rounded-md hover:border-neutral-700">
         <button onClick={handleQuantityDecrease} type="submit">
           <FaMinus size={12} />
         </button>

@@ -12,7 +12,7 @@ export default async function HomePage() {
           <HomeBanner />
         </div>
         <div>
-          <ProductsList products={products} />
+          <ProductsList products={products} title="Destaques" />
         </div>
       </Container>
     </main>

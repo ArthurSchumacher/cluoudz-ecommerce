@@ -62,6 +62,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
     const addItemToCartDto: ProductToCartDto = {
       productId: +product.id,
       amount: quantity,
+      price: product.price,
     };
 
     if (session.status === "unauthenticated") {
@@ -70,9 +71,11 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
     setCartProduct(addItemToCartDto);
     handleAddProductToCart(addItemToCartDto);
-    await actions.addToCart(addItemToCartDto).catch((error) => {
-      return toast.error("Falha ao adicionar item ao carrinho.");
-    });
+    await actions
+      .addToCart({ productId: +product.id, amount: quantity })
+      .catch((error) => {
+        return toast.error("Falha ao adicionar item ao carrinho.");
+      });
     toast.success("Item adicionado ao carrinho com sucesso.");
   };
 

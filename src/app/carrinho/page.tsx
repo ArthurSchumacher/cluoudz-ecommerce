@@ -1,4 +1,3 @@
-import Title from "@/components/Title";
 import CartClient from "@/components/cart/CartClient";
 import Container from "@/components/common/Container";
 import React from "react";
@@ -26,10 +25,12 @@ async function CartPage() {
         cartProduct.product.id.toString()
       );
       const amount = cartProduct.amount;
+      const price = cartProduct.product.price;
 
       return {
         ...product,
         amount,
+        price,
       };
     });
     const products = await Promise.all(productsPromises);

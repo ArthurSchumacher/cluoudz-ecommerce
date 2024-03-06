@@ -29,4 +29,7 @@ export const paths = {
   product(id: string) {
     return `/produto/${id}`;
   },
+  whatsApp() {
+    return "";
+  },
 };

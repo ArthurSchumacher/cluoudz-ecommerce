@@ -22,12 +22,14 @@ function ProductCard({ product }: ProductCardProps) {
     >
       <div className="flex flex-col items-center w-full gap-1">
         <div className="aspect-square overflow-hidden relative w-full mb-4">
-          <div className="absolute top-0 left-0 bg-secondary p-1 sm:p-2 rounded-md z-30 uppercase">
-            <p className="inline-flex items-center justify-center gap-1 text-neutral-50 text-xs sm:text-base">
-              <FaFire size={12} />
-              Promoção!
-            </p>
-          </div>
+          {product.sale ? (
+            <div className="absolute top-0 left-0 bg-secondary p-1 sm:p-2 rounded-md z-30 uppercase">
+              <p className="inline-flex items-center justify-center gap-1 text-neutral-50 text-xs sm:text-base">
+                <FaFire size={12} />
+                Promoção!
+              </p>
+            </div>
+          ) : null}
           <Image
             src={`${product.image}`}
             alt={`${product.name}`}
@@ -35,27 +37,29 @@ function ProductCard({ product }: ProductCardProps) {
           />
         </div>
         <div className="self-start">
-          <p className="text-neutral-950 antialiased text-base">
+          <p className="text-neutral-950 antialiased sm:text-base text-xs">
             Código: <strong className="text-bold">{product.id}</strong>
           </p>
         </div>
         <div className="self-start text-start py-1">
-          <p className="text-neutral-950 antialiased text-sm sm:text-base">
+          <p className="text-neutral-950 antialiased sm:text-base text-sm ">
             {truncateText(product.name)}
           </p>
         </div>
         <div className="self-start text-start py-1">
-          <p className="text-secondary antialiased text-2xl font-bold">
-            {formatPrice(
-              product.price - (product.price * product.discount) / 100
-            )}{" "}
-            <span className="text-neutral-950 antialiased text-base font-normal">
+          <p className="text-secondary antialiased sm:text-2xl text-base font-bold">
+            {product.sale
+              ? formatPrice(
+                  product.price - (product.price * product.discount) / 100
+                )
+              : formatPrice(product.price)}{" "}
+            <span className="text-neutral-950 antialiased sm:text-base text-xs font-normal">
               no pix.
             </span>
           </p>
         </div>
         <div className="self-start text-start py-1">
-          <p className="text-neutral-950 antialiased text-base">
+          <p className="text-neutral-950 antialiased sm:text-base text-xs">
             ou <strong>{formatPrice(product.price)}</strong> no cartão de
             crédito.
           </p>

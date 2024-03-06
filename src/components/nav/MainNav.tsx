@@ -7,6 +7,8 @@ import NavbarMenuModal from "./NavbarMenuModal";
 import { Category } from "@/types/category";
 import { paths } from "@/paths";
 import ShoppingBag from "./ShoppingBag";
+import { Suspense } from "react";
+import SearchInput from "./SearchInput";
 
 interface MainNavProps {
   categories: Category[];
@@ -27,13 +29,9 @@ function MainNav({ categories }: MainNavProps) {
             </Link>
           </div>
           <div className="flex-grow sm:block hidden max-w-screen-md">
-            <Input
-              startContent={<FaSearch className="text-primary" />}
-              placeholder="Hoje você precisa de um(a)..."
-              className="w-full"
-              size="sm"
-              radius="sm"
-            />
+            <Suspense>
+              <SearchInput />
+            </Suspense>
           </div>
           <div className="flex-shrink flex items-center justify-center sm:gap-x-10 gap-x-1">
             <Button

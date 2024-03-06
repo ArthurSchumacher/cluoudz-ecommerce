@@ -78,14 +78,14 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
         <div className="flex flex-col justify-between">
           <Link
             href={paths.product(item.id.toString())}
-            className="text-neutral-700 text-base"
+            className="text-neutral-700 sm:text-base text-xs"
           >
             {truncateText(item.name)}
           </Link>
           <form onSubmit={handleDeleteItemFromCart}>
             <button
               type="submit"
-              className="text-neutral-700 antialiased underline"
+              className="text-neutral-700 antialiased underline sm:text-sm text-xs"
             >
               Remover
             </button>
@@ -93,7 +93,9 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
         </div>
       </div>
       <div className="justify-self-center">
-        <p>{formatPrice(item.price)}</p>
+        <p className="text-neutral-700 antialiased sm:text-base text-xs text-nowrap">
+          {formatPrice(item.price)}
+        </p>
       </div>
       <div className="justify-self-center">
         <form onSubmit={handleUpdateAmountFromCart}>
@@ -104,8 +106,10 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
           />
         </form>
       </div>
-      <div className="justify-self-end font-semibold">
-        {formatPrice(quantity * item.price)}
+      <div className="justify-self-end">
+        <p className="font-semibold text-neutral-700 antialiased sm:text-base text-xs text-end sm:text-center">
+          {formatPrice(quantity * item.price)}
+        </p>
       </div>
     </div>
   );

@@ -5,12 +5,13 @@ import Title from "../Title";
 
 interface ProductListProps {
   products: Product[];
+  title: string;
 }
 
-function ProductsList({ products }: ProductListProps) {
+function ProductsList({ products, title }: ProductListProps) {
   return (
     <>
-      <Title label={"Produtos"} isUpperCase />
+      <Title label={title} isUpperCase />
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
         {products &&
           products.map((product) => {

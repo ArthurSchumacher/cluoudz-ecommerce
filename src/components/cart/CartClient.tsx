@@ -18,19 +18,9 @@ interface CartClientProps {
 }
 
 function CartClient({ products }: CartClientProps) {
-  const { handleClearCart } = useCart();
+  const { handleClearCart, cartTotalValue } = useCart();
   const router = useRouter();
   const [subtotal, setSubtotal] = useState(0);
-
-  useEffect(() => {
-    if (products) {
-      let total = 0;
-      products.forEach((item) => {
-        total += item.price * (item.amount ? item.amount : 1);
-      });
-      setSubtotal(total);
-    }
-  }, [products]);
 
   if (!products) {
     return (
@@ -81,7 +71,7 @@ function CartClient({ products }: CartClientProps) {
         <form onSubmit={handleClear}>
           <Button
             type="submit"
-            size="lg"
+            size="sm"
             radius="sm"
             color="secondary"
             variant="ghost"
@@ -90,15 +80,15 @@ function CartClient({ products }: CartClientProps) {
           </Button>
         </form>
         <div className="text-sm flex flex-col gap-1 items-start">
-          <div className="flex justify-between w-full text-base font-semibold antialiased">
+          <p className="flex justify-between w-full gap-2 sm:text-base text-sm font-semibold antialiased">
             <span>Subtotal</span>
-            <span>{formatPrice(subtotal)}</span>
-          </div>
-          <p className="text-neutral-700 antialiased pb-2">
+            <span className="text-nowrap">{formatPrice(cartTotalValue)}</span>
+          </p>
+          <p className="text-neutral-700 antialiased pb-2 sm:text-base text-xs text-justify">
             Impostos e frete calculados ao comprar
           </p>
           <Button
-            size="lg"
+            size="md"
             radius="sm"
             color="primary"
             variant="solid"

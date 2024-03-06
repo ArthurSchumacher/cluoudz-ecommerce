@@ -6,6 +6,7 @@ import Header from "@/components/nav/Header";
 import Footer from "@/components/footer/Footer";
 import Breadcrumb from "@/components/common/Breadcrumbs";
 import { Toaster } from "react-hot-toast";
+import WhatsAppButton from "@/components/common/WhatsappButton";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
             },
           }}
         />
+        <WhatsAppButton />
       </body>
     </html>
   );
