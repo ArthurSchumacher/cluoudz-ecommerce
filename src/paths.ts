@@ -26,4 +26,7 @@ export const paths = {
   signUp() {
     return "/cadastro";
   },
+  product(id: string) {
+    return `/produto/${id}`;
+  },
 };

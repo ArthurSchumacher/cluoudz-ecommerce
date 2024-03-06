@@ -6,6 +6,7 @@ import { Button, Input } from "@nextui-org/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const signInSchema = z.object({
@@ -44,14 +45,15 @@ export default function SignInForm() {
       });
 
       if (result?.ok) {
+        toast.success("Sucesso ao realizar login!");
         router.back();
       }
 
       if (!result?.ok) {
-        setError("root", { message: "Invalid Credentials!" });
+        toast.error("Credenciais inválidas!");
       }
     } catch (error) {
-      setError("root", { message: "Invalid Credentials!" });
+      toast.error("Credenciais inválidas!");
     }
   };
 
@@ -91,14 +93,6 @@ export default function SignInForm() {
         <p className="px-2 -mt-4 text-danger text-sm font-light">
           {errors.password.message}
         </p>
-      ) : null}
-
-      {errors.root ? (
-        <div className="w-full p-2 bg-danger-200 border border-danger-400 rounded">
-          <p className="text-danger-900 antialiased font-extralight">
-            {errors.root.message}
-          </p>
-        </div>
       ) : null}
 
       <Button

@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Checkbox, Input, Link } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { LuDot } from "react-icons/lu";
 import { z } from "zod";
 
@@ -47,7 +48,6 @@ export default function SignUpForm() {
     control,
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<SignUpFormFields>({
     defaultValues: { tos: false },
@@ -58,9 +58,9 @@ export default function SignUpForm() {
   const onSubmit: SubmitHandler<SignUpFormFields> = async (data) => {
     try {
       if (!data.tos) {
-        setError("root", { message: "You must accept terms of service." });
+        toast.error("Você precisa aceitar os termos de serviço!");
       }
-      // CREATE USER
+
       if (data.tos === true && data.password === data.c_password) {
         const userDto = {
           ...data,
@@ -72,7 +72,7 @@ export default function SignUpForm() {
         router.replace(paths.signIn());
       }
     } catch (error) {
-      setError("root", { message: "Failed to create user!" });
+      toast.error("Falha ao criar usúario!");
     }
   };
 

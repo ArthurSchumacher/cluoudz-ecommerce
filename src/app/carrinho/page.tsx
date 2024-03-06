@@ -8,8 +8,9 @@ import { nextAuthOptions } from "@/auth";
 
 async function CartPage() {
   const session = await getServerSession(nextAuthOptions);
+  const userCart = await queries.userCart();
 
-  if (!session) {
+  if (!session || userCart.message) {
     return (
       <section>
         <Container>
@@ -19,15 +20,17 @@ async function CartPage() {
     );
   }
 
-  const userCart = await queries.userCart();
-
-  if (userCart._count > 0) {
+  if (!userCart.message && userCart.cartProduct.length > 0) {
     let productsPromises = userCart.cartProduct.map(async (cartProduct) => {
       const product = await queries.singleProduct(
         cartProduct.product.id.toString()
       );
+      const amount = cartProduct.amount;
 
-      return product;
+      return {
+        ...product,
+        amount,
+      };
     });
     const products = await Promise.all(productsPromises);
 

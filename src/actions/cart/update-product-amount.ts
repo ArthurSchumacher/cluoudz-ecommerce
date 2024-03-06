@@ -6,8 +6,8 @@ import { ProductToCartDto, SingleCart } from "@/types/cart";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export async function addToCart(
-  addItemToCartDto: ProductToCartDto
+export async function updateProductAmount(
+  updateProductAmountDto: ProductToCartDto
 ): Promise<SingleCart> {
   const session = await getServerSession(nextAuthOptions);
   if (!session || !session.user) {
@@ -15,12 +15,12 @@ export async function addToCart(
   }
 
   const res = await fetch(`${process.env.API_URL}/cart`, {
-    method: "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${session.access_token}`,
     },
-    body: JSON.stringify(addItemToCartDto),
+    body: JSON.stringify(updateProductAmountDto),
   });
 
   if (!res.ok) {

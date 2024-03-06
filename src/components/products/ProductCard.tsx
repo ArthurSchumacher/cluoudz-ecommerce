@@ -1,6 +1,8 @@
 "use client";
 
+import { paths } from "@/paths";
 import { Product } from "@/types/product";
+import { formatPrice } from "@/utils/formatPrice";
 import { truncateText } from "@/utils/truncateText";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
@@ -15,7 +17,7 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      onClick={() => router.push(`/produto/${product.id}`)}
+      onClick={() => router.push(paths.product(product.id.toString()))}
       className="shadow-lg col-span-1 cursor-pointer border-1 border-neutral-300 bg-neutral-50 rounded-md p-2 transition-all hover:scale-105 text-center text-sm"
     >
       <div className="flex flex-col items-center w-full gap-1">
@@ -44,9 +46,8 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="self-start text-start py-1">
           <p className="text-secondary antialiased text-2xl font-bold">
-            R${" "}
-            {(product.price - (product.price * product.discount) / 100).toFixed(
-              2
+            {formatPrice(
+              product.price - (product.price * product.discount) / 100
             )}{" "}
             <span className="text-neutral-950 antialiased text-base font-normal">
               no pix.
@@ -55,8 +56,8 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="self-start text-start py-1">
           <p className="text-neutral-950 antialiased text-base">
-            ou <strong>R$ {Number(product.price).toFixed(2)}</strong> no cartão
-            de crédito.
+            ou <strong>{formatPrice(product.price)}</strong> no cartão de
+            crédito.
           </p>
         </div>
       </div>

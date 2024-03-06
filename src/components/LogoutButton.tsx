@@ -1,19 +1,25 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { useCart } from "@/hooks/useCart";
+import { paths } from "@/paths";
 import { signOut } from "next-auth/react";
+import { revalidateTag } from "next/cache";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function LogoutButton() {
   const router = useRouter();
+  const { handleClearCart } = useCart();
 
   async function logout() {
     await signOut({
       redirect: false,
     });
 
-    router.replace("/");
+    handleClearCart();
+    router.push(paths.signIn());
+    toast.success("Logout realizado com sucesso!");
   }
 
   return (

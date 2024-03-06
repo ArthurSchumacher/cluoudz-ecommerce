@@ -29,13 +29,17 @@ async function Footer() {
             <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">
               Categorias
             </h3>
-            {categories.map((category) => {
-              return (
-                <Link key={category.id} className="text-neutral-50 antialiased">
-                  {category.name}
-                </Link>
-              );
-            })}
+            {categories &&
+              categories.map((category) => {
+                return (
+                  <Link
+                    key={category.id}
+                    className="text-neutral-50 antialiased"
+                  >
+                    {category.name}
+                  </Link>
+                );
+              })}
           </FooterList>
           <FooterList>
             <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">

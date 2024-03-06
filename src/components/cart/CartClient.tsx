@@ -1,17 +1,37 @@
-import { useCart } from "@/hooks/useCart";
+"use client";
+
 import { paths } from "@/paths";
 import { Button, Link, Skeleton } from "@nextui-org/react";
-import React from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import Title from "../Title";
-import { useSession } from "next-auth/react";
 import { SingleProduct } from "@/types/product";
+import ItemContent from "./ItemContent";
+import * as actions from "@/actions";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { useCart } from "@/hooks/useCart";
+import { formatPrice } from "@/utils/formatPrice";
 
 interface CartClientProps {
   products?: SingleProduct[];
 }
 
 function CartClient({ products }: CartClientProps) {
+  const { handleClearCart } = useCart();
+  const router = useRouter();
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    if (products) {
+      let total = 0;
+      products.forEach((item) => {
+        total += item.price * (item.amount ? item.amount : 1);
+      });
+      setSubtotal(total);
+    }
+  }, [products]);
+
   if (!products) {
     return (
       <div className="flex flex-col items-center py-16">
@@ -31,6 +51,16 @@ function CartClient({ products }: CartClientProps) {
     );
   }
 
+  const handleClear = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    handleClearCart();
+    await actions.deleteCart().catch((error: any) => {
+      toast.error(`Erro: ${error.message}`);
+    });
+    toast.success("Carrinho limpo com sucesso.");
+    router.refresh();
+  };
+
   return (
     <div className="pb-16">
       <Title label="Meu carrinho" isUpperCase={false} />
@@ -42,19 +72,29 @@ function CartClient({ products }: CartClientProps) {
       </div>
       <div>
         {products.map((item) => {
-          return <div key={item.id}>{item.name}</div>;
+          return (
+            <ItemContent key={item.id} item={item} setSubtotal={setSubtotal} />
+          );
         })}
       </div>
-      <div className="border-t-[1.5px] border-neutral-300 py-4 flex items-center justify-between gap-8">
-        <Button size="lg" radius="sm" color="secondary" variant="ghost">
-          Limpar carrinho
-        </Button>
+      <div className="border-t-[1.5px] border-neutral-300 py-4 flex justify-between gap-8">
+        <form onSubmit={handleClear}>
+          <Button
+            type="submit"
+            size="lg"
+            radius="sm"
+            color="secondary"
+            variant="ghost"
+          >
+            Limpar carrinho
+          </Button>
+        </form>
         <div className="text-sm flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full text-base font-semibold antialiased">
             <span>Subtotal</span>
-            <span>R$ 1000</span>
+            <span>{formatPrice(subtotal)}</span>
           </div>
-          <p className="text-neutral-700 antialiased">
+          <p className="text-neutral-700 antialiased pb-2">
             Impostos e frete calculados ao comprar
           </p>
           <Button
@@ -62,10 +102,17 @@ function CartClient({ products }: CartClientProps) {
             radius="sm"
             color="primary"
             variant="solid"
-            className="w-full py-4"
+            className="w-full"
           >
             Checkout
           </Button>
+          <Link
+            href={paths.home()}
+            className="text-neutral-700 antialiased flex items-center gap-1 pt-2"
+          >
+            <MdArrowBack />
+            <span>Continue comprando</span>
+          </Link>
         </div>
       </div>
     </div>

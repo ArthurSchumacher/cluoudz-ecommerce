@@ -5,7 +5,7 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import { Button, Link } from "@nextui-org/react";
 import ProductImage from "./ProductImage";
 import * as actions from "@/actions";
-import { AddItemToCartDto } from "@/types/cart";
+import { ProductToCartDto } from "@/types/cart";
 import SetQuantity from "./SetQuantity";
 import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
@@ -27,7 +27,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
   const router = useRouter();
   const { handleAddProductToCart, cartProducts } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [cartProduct, setCartProduct] = useState<AddItemToCartDto>({
+  const [cartProduct, setCartProduct] = useState<ProductToCartDto>({
     productId: +product.id,
     amount: quantity,
   });
@@ -59,7 +59,7 @@ function ProductDetails({ product }: ProductDetailsProps) {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const addItemToCartDto: AddItemToCartDto = {
+    const addItemToCartDto: ProductToCartDto = {
       productId: +product.id,
       amount: quantity,
     };
@@ -137,9 +137,6 @@ function ProductDetails({ product }: ProductDetailsProps) {
             <SetQuantity
               cartCounter
               quantity={quantity}
-              minValue={1}
-              maxValue={product.stock}
-              setQuantity={setQuantity}
               handleQuantityDecrease={handleQtyDecrease}
               handleQuantityIncrease={handleQtyIncrease}
             />

@@ -12,7 +12,7 @@ export type Product = {
 };
 
 export type SingleProduct = {
-  id: string;
+  id: number;
   name: string;
   price: number;
   stock: number;
@@ -23,4 +23,5 @@ export type SingleProduct = {
   category: {
     name: string;
   };
+  amount?: number;
 };

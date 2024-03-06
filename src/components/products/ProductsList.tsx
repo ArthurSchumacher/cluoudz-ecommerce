@@ -12,9 +12,10 @@ function ProductsList({ products }: ProductListProps) {
     <>
       <Title label={"Produtos"} isUpperCase />
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
-        {products.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
-        })}
+        {products &&
+          products.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
+          })}
       </div>
     </>
   );

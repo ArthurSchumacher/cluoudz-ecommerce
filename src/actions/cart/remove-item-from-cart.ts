@@ -2,25 +2,21 @@
 
 import { nextAuthOptions } from "@/auth";
 import { paths } from "@/paths";
-import { ProductToCartDto, SingleCart } from "@/types/cart";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export async function addToCart(
-  addItemToCartDto: ProductToCartDto
-): Promise<SingleCart> {
+export async function removeItemFromCart(id: string): Promise<string> {
   const session = await getServerSession(nextAuthOptions);
   if (!session || !session.user) {
     redirect(paths.signIn());
   }
 
-  const res = await fetch(`${process.env.API_URL}/cart`, {
-    method: "POST",
+  const res = await fetch(`${process.env.API_URL}/cart/product/${id}`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${session.access_token}`,
     },
-    body: JSON.stringify(addItemToCartDto),
   });
 
   if (!res.ok) {

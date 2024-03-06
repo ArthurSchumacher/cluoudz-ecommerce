@@ -34,7 +34,7 @@ const nextAuthOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: paths.signIn(),
+    signIn: paths.home(),
     signOut: paths.signIn(),
     error: paths.signIn(),
     newUser: paths.home(),

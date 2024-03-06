@@ -4,9 +4,11 @@ export type Cart = {
   id: string;
   cartProduct: CartProduct[];
   _count: number;
+  _totalPrice: number;
+  message?: string;
 };
 
-export type AddItemToCartDto = {
+export type ProductToCartDto = {
   productId: number;
   amount: number;
 };

@@ -13,18 +13,19 @@ function CategoriesList({ categories }: CategoriesListProps) {
       <h2 className="text-primary text-md antialiased pb-2 pt-4">Categorias</h2>
       <hr />
       <ul>
-        {categories.map((category) => {
-          return (
-            <li key={category.id}>
-              <Link
-                href={`/?category=${category.id}`}
-                className="text-neutral-700 antialiased py-2"
-              >
-                {category.name}
-              </Link>
-            </li>
-          );
-        })}
+        {categories &&
+          categories.map((category) => {
+            return (
+              <li key={category.id}>
+                <Link
+                  href={`/?category=${category.id}`}
+                  className="text-neutral-700 antialiased py-2"
+                >
+                  {category.name}
+                </Link>
+              </li>
+            );
+          })}
       </ul>
     </>
   );
