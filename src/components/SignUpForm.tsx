@@ -243,7 +243,7 @@ export default function SignUpForm() {
       <Button
         type="submit"
         isLoading={isSubmitting}
-        className="w-full text-neutral-50"
+        className="w-full text-content1"
         color="primary"
         size="lg"
         radius="sm"

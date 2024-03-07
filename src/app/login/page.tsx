@@ -8,10 +8,10 @@ import React from "react";
 
 function SignInPage() {
   return (
-    <section className="w-full pb-16 text-neutral-100">
+    <section className="w-full pb-16 text-content1">
       <Container>
         <Breadcrumb />
-        <h1 className="sm:text-3xl text-xl font-light text-neutral-900 pb-6">
+        <h1 className="sm:text-3xl text-xl font-light text-content3 pb-6">
           Acessar ou criar conta
         </h1>
         <div className="flex flex-col sm:flex-row gap-14">
@@ -29,14 +29,15 @@ function SignInPage() {
             <h2 className="sm:text-3xl text-xl font-light text-secondary pb-6">
               Criar uma conta é rápido, fácil e gratuito!
             </h2>
-            <p className="sm:text-lg font-extralight text-neutral-900 mb-6">
-              Com a sua conta da Sexs você tem acesso a ofertas exclusivas,
-              descontos, além de acompanhar os seus pedidos e muito mais!
+            <p className="sm:text-lg font-extralight text-content3 mb-6">
+              Com a sua conta da {`H'Shop`} você tem acesso a ofertas
+              exclusivas, descontos, além de acompanhar os seus pedidos e muito
+              mais!
             </p>
             <Button
               variant="ghost"
               color="secondary"
-              className="w-full text-neutral-900 hover:text-neutral-50"
+              className="w-full text-content3 hover:text-content1"
               as={Link}
               href={paths.signUp()}
               size="lg"

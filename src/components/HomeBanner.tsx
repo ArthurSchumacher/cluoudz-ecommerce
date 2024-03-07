@@ -3,10 +3,10 @@ import { Image } from "@nextui-org/react";
 
 function HomeBanner() {
   return (
-    <div className="relative bg-gradient-to-r from-fuchsia-700 to-fuchsia-900">
+    <div className="relative bg-gradient-to-r from-secondary-700 to-secondary-900">
       <div className="mx-auto px-8 py-12 flex flex-col gap-2 md:flex-row items-center justify-evenly">
         <div className="mb-8 md:mb-0 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold antialiased text-neutral-50 mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold antialiased text-content1 mb-4">
             Promoção de abertura!
           </h1>
           <p className="text-lg md:text-xl text-white mb-2">

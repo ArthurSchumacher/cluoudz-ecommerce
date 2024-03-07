@@ -6,11 +6,14 @@ function SearchInput() {
   return (
     <>
       <Input
-        startContent={<FaSearch className="text-primary" />}
+        startContent={<FaSearch className="text-primary-800" />}
         placeholder="Hoje você precisa de um(a)..."
         className="w-full"
         size="sm"
         radius="sm"
+        classNames={{
+          input: "text-primary-800",
+        }}
       />
     </>
   );

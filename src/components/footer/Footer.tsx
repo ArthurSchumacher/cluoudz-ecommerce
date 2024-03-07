@@ -22,11 +22,11 @@ async function Footer() {
   ];
 
   return (
-    <footer className="bg-secondary text-sm">
+    <footer className="bg-primary-700 text-sm">
       <Container>
         <div className="flex flex-col md:flex-row justify-between py-8">
           <FooterList>
-            <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">
+            <h3 className="text-base font-bold antialiased text-content1 pb-2">
               Categorias
             </h3>
             {categories &&
@@ -34,7 +34,8 @@ async function Footer() {
                 return (
                   <Link
                     key={category.id}
-                    className="text-neutral-50 antialiased"
+                    href={paths.search(category.id)}
+                    className="text-content1 antialiased"
                   >
                     {category.name}
                   </Link>
@@ -42,7 +43,7 @@ async function Footer() {
               })}
           </FooterList>
           <FooterList>
-            <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">
+            <h3 className="text-base font-bold antialiased text-content1 pb-2">
               Serviços ao consumidor
             </h3>
             {links.map((link, index) => {
@@ -50,7 +51,7 @@ async function Footer() {
                 <Link
                   key={index}
                   href={link.path}
-                  className="text-neutral-50 antialiased"
+                  className="text-content1 antialiased"
                 >
                   {link.name}
                 </Link>
@@ -58,10 +59,10 @@ async function Footer() {
             })}
           </FooterList>
           <div className="w-full md:w-1/3">
-            <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">
+            <h3 className="text-base font-bold antialiased text-content1 pb-2">
               Sobre nós
             </h3>
-            <p className="text-neutral-50 antialiased text-base text-justify pb-2">
+            <p className="text-content1 antialiased text-base text-justify pb-2">
               Somos uma loja de sexshop dedicada a oferecer uma experiência
               única e inclusiva para todos os nossos clientes. Nossa missão é
               proporcionar um ambiente acolhedor e discreto, onde as pessoas
@@ -70,26 +71,26 @@ async function Footer() {
               estamos comprometidos em atender às diversas necessidades e
               desejos de nossos clientes.
             </p>
-            <p className="text-neutral-50 antialiased text-base text-justify">
-              &copy; {new Date().getFullYear()} Sexs. Todos os direitos
+            <p className="text-content1 antialiased text-base text-justify">
+              &copy; {new Date().getFullYear()} {`H'shop`}. Todos os direitos
               reservados.
             </p>
           </div>
           <FooterList>
-            <h3 className="text-base font-bold antialiased text-neutral-50 pb-2">
+            <h3 className="text-base font-bold antialiased text-content1 pb-2">
               Siga-nos
             </h3>
             <div className="flex gap-2">
-              <Link href="#" className="text-neutral-50">
+              <Link href="#" className="text-content1">
                 <MdFacebook size={24} />
               </Link>
-              <Link href="#" className="text-neutral-50">
+              <Link href="#" className="text-content1">
                 <AiFillTwitterCircle size={24} />
               </Link>
-              <Link href="#" className="text-neutral-50">
+              <Link href="#" className="text-content1">
                 <AiFillInstagram size={24} />
               </Link>
-              <Link href="#" className="text-neutral-50">
+              <Link href="#" className="text-content1">
                 <AiFillYoutube size={24} />
               </Link>
             </div>

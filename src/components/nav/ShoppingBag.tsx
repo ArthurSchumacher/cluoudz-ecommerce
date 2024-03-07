@@ -20,7 +20,7 @@ function ShoppingBag() {
         as={Link}
         href={paths.cart()}
         variant="flat"
-        className="bg-transparent text-neutral-50"
+        className="bg-transparent text-content1"
       >
         <FaShoppingBag size={40} className="sm:block hidden" />
         <FaShoppingBag size={20} className="sm:hidden block" />

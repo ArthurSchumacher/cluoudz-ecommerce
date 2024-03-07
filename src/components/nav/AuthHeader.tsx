@@ -19,12 +19,12 @@ function AuthHeader() {
   if (session.status === "authenticated") {
     authContent = (
       <>
-        <FiUser size={20} className="text-neutral-50" />
-        <p className="text-neutral-50 antialiased uppercase font-bold">
+        <FiUser size={20} className="text-content1" />
+        <p className="text-content1 antialiased uppercase font-bold">
           Bem vindo{" "}
           <Link
             href={paths.profile()}
-            className="text-neutral-50 antialiased uppercase border-b border-b-transparent hover:border-b-neutral-50"
+            className="text-content1 antialiased uppercase border-b border-b-transparent hover:border-b-content1"
           >
             {session.data.user.name}
           </Link>
@@ -37,19 +37,19 @@ function AuthHeader() {
   if (session.status === "unauthenticated") {
     authContent = (
       <>
-        <FiUser size={20} className="text-neutral-50" />
-        <p className="text-neutral-50 antialiased uppercase font-bold">
+        <FiUser size={20} className="text-content1" />
+        <p className="text-content1 antialiased uppercase font-bold">
           Bem vindo visitante,{" "}
           <Link
             href={paths.signUp()}
-            className="text-neutral-50 antialiased border-b border-b-transparent hover:border-b-neutral-50"
+            className="text-content1 antialiased border-b border-b-transparent hover:border-b-content1"
           >
             cadastre-se
           </Link>{" "}
           ou{" "}
           <Link
             href={paths.signIn()}
-            className="text-neutral-50 antialiased border-b border-b-transparent hover:border-b-neutral-50"
+            className="text-content1 antialiased border-b border-b-transparent hover:border-b-content1"
           >
             faça seu login
           </Link>

@@ -6,7 +6,7 @@ import React from "react";
 
 function SignUpPage() {
   return (
-    <section className="w-full text-neutral-100 pb-16">
+    <section className="w-full text-content1 pb-16">
       <Container>
         <Breadcrumb />
         <div className="flex flex-col sm:flex-row gap-14">
@@ -24,9 +24,10 @@ function SignUpPage() {
             <h2 className="text-xl font-light text-secondary pb-6">
               Criar uma conta é rápido, fácil e gratuito!
             </h2>
-            <p className="text-md font-extralight text-neutral-700">
-              Com a sua conta da Sexs você tem acesso a ofertas exclusivas,
-              descontos, além de acompanhar os seus pedidos e muito mais!
+            <p className="text-md font-extralight text-content3">
+              Com a sua conta da {`H'Shop`} você tem acesso a ofertas
+              exclusivas, descontos, além de acompanhar os seus pedidos e muito
+              mais!
             </p>
           </div>
         </div>

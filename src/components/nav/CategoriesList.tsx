@@ -19,7 +19,7 @@ function CategoriesList({ categories }: CategoriesListProps) {
               <li key={category.id}>
                 <Link
                   href={`/?category=${category.id}`}
-                  className="text-neutral-700 antialiased py-2"
+                  className="text-content3 antialiased py-2"
                 >
                   {category.name}
                 </Link>

@@ -32,12 +32,12 @@ export default function RootLayout({
           <Footer />
         </Providers>
         <Toaster
-          position="bottom-right"
+          position="bottom-left"
           toastOptions={{
             duration: 5000,
             style: {
-              background: "#4a044e",
-              color: "#fff",
+              background: "#292524",
+              color: "#f5f5f4",
             },
           }}
         />

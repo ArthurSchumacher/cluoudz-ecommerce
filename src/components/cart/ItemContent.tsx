@@ -15,10 +15,9 @@ import { useRouter } from "next/navigation";
 
 interface ItemContentProps {
   item: SingleProduct;
-  setSubtotal: (subtotal: number) => void;
 }
 
-function ItemContent({ item, setSubtotal }: ItemContentProps) {
+function ItemContent({ item }: ItemContentProps) {
   const router = useRouter();
   const [quantity, setQuantity] = useState(item.amount ? item.amount : 1);
   const {
@@ -78,14 +77,14 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
         <div className="flex flex-col justify-between">
           <Link
             href={paths.product(item.id.toString())}
-            className="text-neutral-700 sm:text-base text-xs"
+            className="text-content3 sm:text-base text-xs"
           >
             {truncateText(item.name)}
           </Link>
           <form onSubmit={handleDeleteItemFromCart}>
             <button
               type="submit"
-              className="text-neutral-700 antialiased underline sm:text-sm text-xs"
+              className="text-content3 antialiased underline sm:text-sm text-xs"
             >
               Remover
             </button>
@@ -93,7 +92,7 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
         </div>
       </div>
       <div className="justify-self-center">
-        <p className="text-neutral-700 antialiased sm:text-base text-xs text-nowrap">
+        <p className="text-content3 antialiased sm:text-base text-xs text-nowrap">
           {formatPrice(item.price)}
         </p>
       </div>
@@ -107,7 +106,7 @@ function ItemContent({ item, setSubtotal }: ItemContentProps) {
         </form>
       </div>
       <div className="justify-self-end">
-        <p className="font-semibold text-neutral-700 antialiased sm:text-base text-xs text-end sm:text-center">
+        <p className="font-semibold text-content3 antialiased sm:text-base text-xs text-end sm:text-center">
           {formatPrice(quantity * item.price)}
         </p>
       </div>

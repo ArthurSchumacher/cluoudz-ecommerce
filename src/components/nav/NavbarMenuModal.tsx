@@ -43,22 +43,22 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
         }}
         isIconOnly
         variant="flat"
-        className="bg-transparent text-neutral-50 sm:hidden block"
+        className="bg-transparent text-content1 sm:hidden block"
       >
         {open ? <FaTimes size={20} /> : <FaBars size={20} />}
       </Button>
       <div
-        className={`fixed top-0 w-full h-dvh z-40 bg-neutral-950/25 transition-all duration-1000 ease-in ${
+        className={`fixed top-0 w-full h-dvh z-40 bg-foreground/25 transition-all duration-1000 ease-in ${
           open ? "left-0 opacity-100" : "left-[-100%] opacity-0"
         }`}
       >
-        <div ref={node} className={`w-[90%] h-dvh bg-neutral-100 p-4 z-50`}>
+        <div ref={node} className={`w-[90%] h-dvh bg-background p-4 z-50`}>
           <h1 className="text-primary text-md antialiased pb-2">Páginas</h1>
           <hr />
           <ul>
             {links.map((link, index) => {
               return (
-                <li key={index} className="text-neutral-700 antialiased py-2">
+                <li key={index} className="text-content3 antialiased py-2">
                   <Link href={link.path}>{link.name}</Link>
                 </li>
               );

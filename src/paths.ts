@@ -32,4 +32,9 @@ export const paths = {
   whatsApp() {
     return "";
   },
+  search(categoryId?: string, productName?: string) {
+    return `/procurar?${categoryId ? `categoria=${categoryId}` : ""}${
+      productName ? `&produto=${productName}` : ""
+    }`;
+  },
 };

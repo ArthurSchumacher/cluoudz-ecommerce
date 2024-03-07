@@ -6,11 +6,11 @@ import * as queries from "@/queries";
 export default async function HomePage() {
   const products = await queries.allProducts();
   return (
-    <main className="w-full py-16">
+    <main className="w-full pb-16 bg-background">
+      <div>
+        <HomeBanner />
+      </div>
       <Container>
-        <div>
-          <HomeBanner />
-        </div>
         <div>
           <ProductsList products={products} title="Destaques" />
         </div>

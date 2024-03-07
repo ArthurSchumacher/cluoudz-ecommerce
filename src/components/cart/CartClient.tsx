@@ -20,7 +20,6 @@ interface CartClientProps {
 function CartClient({ products }: CartClientProps) {
   const { handleClearCart, cartTotalValue } = useCart();
   const router = useRouter();
-  const [subtotal, setSubtotal] = useState(0);
 
   if (!products) {
     return (
@@ -31,7 +30,7 @@ function CartClient({ products }: CartClientProps) {
         <div>
           <Link
             href={paths.home()}
-            className="text-neutral-700 flex items-center gap-1 mt-2"
+            className="text-content3 flex items-center gap-1 mt-2"
           >
             <MdArrowBack size={20} />
             <span>Começe a comprar</span>
@@ -62,12 +61,10 @@ function CartClient({ products }: CartClientProps) {
       </div>
       <div>
         {products.map((item) => {
-          return (
-            <ItemContent key={item.id} item={item} setSubtotal={setSubtotal} />
-          );
+          return <ItemContent key={item.id} item={item} />;
         })}
       </div>
-      <div className="border-t-[1.5px] border-neutral-300 py-4 flex justify-between gap-8">
+      <div className="border-t-[1.5px] border-content2 py-4 flex justify-between gap-8">
         <form onSubmit={handleClear}>
           <Button
             type="submit"
@@ -75,6 +72,7 @@ function CartClient({ products }: CartClientProps) {
             radius="sm"
             color="secondary"
             variant="ghost"
+            className="w-full"
           >
             Limpar carrinho
           </Button>
@@ -84,11 +82,10 @@ function CartClient({ products }: CartClientProps) {
             <span>Subtotal</span>
             <span className="text-nowrap">{formatPrice(cartTotalValue)}</span>
           </p>
-          <p className="text-neutral-700 antialiased pb-2 sm:text-base text-xs text-justify">
+          <p className="text-content3 antialiased pb-2 sm:text-base text-xs text-justify">
             Impostos e frete calculados ao comprar
           </p>
           <Button
-            size="md"
             radius="sm"
             color="primary"
             variant="solid"
@@ -98,7 +95,7 @@ function CartClient({ products }: CartClientProps) {
           </Button>
           <Link
             href={paths.home()}
-            className="text-neutral-700 antialiased flex items-center gap-1 pt-2"
+            className="text-content3 antialiased flex items-center gap-1 pt-2"
           >
             <MdArrowBack />
             <span>Continue comprando</span>

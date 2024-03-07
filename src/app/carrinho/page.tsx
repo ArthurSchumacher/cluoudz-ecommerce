@@ -4,12 +4,15 @@ import React from "react";
 import * as queries from "@/queries";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/auth";
+import { Cart } from "@/types/cart";
 
 async function CartPage() {
   const session = await getServerSession(nextAuthOptions);
-  const userCart = await queries.userCart();
+  const userCart: Cart | null = await queries.userCart().catch(() => {
+    return null;
+  });
 
-  if (!session || userCart.message) {
+  if (!session || !userCart || userCart.message) {
     return (
       <section>
         <Container>

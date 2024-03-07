@@ -9,6 +9,7 @@ import { paths } from "@/paths";
 import ShoppingBag from "./ShoppingBag";
 import { Suspense } from "react";
 import SearchInput from "./SearchInput";
+import Logo from "../common/Logo";
 
 interface MainNavProps {
   categories: Category[];
@@ -16,17 +17,12 @@ interface MainNavProps {
 
 function MainNav({ categories }: MainNavProps) {
   return (
-    <nav className="w-full sm:py-10 py-2 bg-primary text-neutral-50">
+    <nav className="w-full sm:py-10 py-2 bg-primary-800 text-content1">
       <Container>
         <div className="flex flex-row items-center justify-between gap-x-8">
           <div className="flex-shrink flex flex-row items-center justify-center gap-x-2">
             <NavbarMenuModal categories={categories} />
-            <Link
-              href={paths.home()}
-              className="sm:text-5xl text-2xl font-bold text-neutral-50 antialiased"
-            >
-              {`SEX'S`}
-            </Link>
+            <Logo />
           </div>
           <div className="flex-grow sm:block hidden max-w-screen-md">
             <Suspense>
@@ -40,9 +36,9 @@ function MainNav({ categories }: MainNavProps) {
               href="#"
               isIconOnly
               variant="flat"
-              className="bg-transparent text-neutral-50 flex lg:hidden"
+              className="bg-transparent text-content1 flex lg:hidden"
             >
-              <FiUser size={20} className="text-neutral-50" />
+              <FiUser size={20} className="text-content1" />
             </Button>
             <Button
               size="lg"
@@ -50,7 +46,7 @@ function MainNav({ categories }: MainNavProps) {
               as={Link}
               href="#"
               variant="flat"
-              className="bg-transparent text-neutral-50"
+              className="bg-transparent text-content1"
             >
               <FaRegHeart size={40} className="sm:block hidden" />
               <FaRegHeart size={20} className="sm:hidden block" />
