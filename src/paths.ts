@@ -37,4 +37,7 @@ export const paths = {
       productName ? `&produto=${productName}` : ""
     }`;
   },
+  addresses() {
+    return `/perfil/enderecos`;
+  },
 };

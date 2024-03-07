@@ -9,7 +9,7 @@ export default function Breadcrumb() {
   const currentPath = usePathname();
   return (
     <Container>
-      <div className="flex items-center py-16">
+      <div className="flex items-center sm:py-16 py-8">
         <Breadcrumbs>
           {currentPath.includes(paths.home()) ? (
             <BreadcrumbItem href={paths.home()}>
@@ -24,6 +24,16 @@ export default function Breadcrumb() {
           {currentPath.includes("cadastro") ? (
             <BreadcrumbItem href={paths.signUp()}>
               <p className="text-xl antialiased">Cadastro</p>
+            </BreadcrumbItem>
+          ) : null}
+          {currentPath.includes("perfil") ? (
+            <BreadcrumbItem href={paths.profile()}>
+              <p className="text-xl antialiased">Perfil</p>
+            </BreadcrumbItem>
+          ) : null}
+          {currentPath.includes("endereco") ? (
+            <BreadcrumbItem href={paths.profile()}>
+              <p className="text-xl antialiased">Endereço</p>
             </BreadcrumbItem>
           ) : null}
         </Breadcrumbs>

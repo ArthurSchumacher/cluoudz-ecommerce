@@ -1,14 +1,14 @@
-import Container from "@/components/common/Container";
+import * as queries from "@/queries";
 import ClientProfile from "@/components/profile/ClientProfile";
 import React from "react";
+import { User } from "@/types/user";
 
-function ProfilePage() {
+async function ProfilePage() {
+  const user: User = await queries.userProfile();
   return (
-    <section>
-      <Container>
-        <ClientProfile />
-      </Container>
-    </section>
+    <div>
+      <ClientProfile user={user} />
+    </div>
   );
 }
 
