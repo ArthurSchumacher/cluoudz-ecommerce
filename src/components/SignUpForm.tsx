@@ -2,9 +2,12 @@
 
 import * as actions from "@/actions";
 import { paths } from "@/paths";
+import { normalizeCpf } from "@/utils/formatCpf";
+import { normalizePhoneNumber } from "@/utils/formatPhoneNumber";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Checkbox, Input, Link } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { ChangeEvent, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuDot } from "react-icons/lu";
@@ -44,6 +47,8 @@ const signUpSchema = z.object({
 type SignUpFormFields = z.infer<typeof signUpSchema>;
 
 export default function SignUpForm() {
+  const [phone, setPhone] = useState("");
+  const [cpf, setCpf] = useState("");
   const {
     control,
     register,
@@ -74,6 +79,18 @@ export default function SignUpForm() {
     } catch (error) {
       toast.error("Falha ao criar usúario!");
     }
+  };
+
+  const handlePhoneMask = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const normalizedValue = normalizePhoneNumber(value);
+    setPhone(normalizedValue);
+  };
+
+  const handleCpfMask = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const normalizedValue = normalizeCpf(value);
+    setCpf(normalizedValue);
   };
 
   return (
@@ -117,6 +134,8 @@ export default function SignUpForm() {
       <Input
         {...register("cpf")}
         isInvalid={errors.cpf ? true : undefined}
+        value={cpf}
+        onChange={handleCpfMask}
         type="text"
         placeholder="Digite seu CPF"
         label="CPF"
@@ -135,6 +154,8 @@ export default function SignUpForm() {
       <Input
         {...register("phone")}
         isInvalid={errors.phone ? true : undefined}
+        value={phone}
+        onChange={handlePhoneMask}
         type="text"
         placeholder="DDD + Número"
         label="Celular"

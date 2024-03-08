@@ -10,6 +10,10 @@ export default function middleware(request: NextRequest) {
   if ((pathname === "/login" || pathname === "/cadastro") && token) {
     return NextResponse.redirect(new URL(getUrl(paths.home())));
   }
+
+  if (pathname.includes("/perfil") && !token) {
+    return NextResponse.redirect(new URL(getUrl(paths.home())));
+  }
 }
 
 export const config = {

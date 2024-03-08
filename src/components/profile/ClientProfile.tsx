@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import FormContainer from "../common/FormContainer";
 import { Button, Input } from "@nextui-org/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -14,7 +14,10 @@ import * as actions from "@/actions";
 import toast from "react-hot-toast";
 import { LuDot } from "react-icons/lu";
 import { formatCpf } from "@/utils/formatCpf";
-import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
+import {
+  formatPhoneNumber,
+  normalizePhoneNumber,
+} from "@/utils/formatPhoneNumber";
 
 interface ClientProfileProps {
   user: User;
@@ -51,19 +54,11 @@ const updateUserSchema = z.object({
 
 type UpdateUserFormFields = z.infer<typeof updateUserSchema>;
 
-const normalizePhoneNumber = (value: string) => {
-  return value
-    .replace(/\D/g, "")
-    .replace(/(\d{2})(\d)/, "($1) $2")
-    .replace(/(\d)(\d{4})(\d{4})$/, "$1 $2-$3");
-};
-
 function ClientProfile({ user }: ClientProfileProps) {
+  const [phone, setPhone] = useState(user.phone);
   const {
     register,
     handleSubmit,
-    setError,
-    setValue,
     formState: { errors, isSubmitting },
   } = useForm<UpdateUserFormFields>({
     resolver: zodResolver(updateUserSchema),
@@ -97,10 +92,10 @@ function ClientProfile({ user }: ClientProfileProps) {
     }
   };
 
-  const handlePhoneChange = (e: any) => {
+  const handlePhoneMask = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const normalizedValue = normalizePhoneNumber(value);
-    setValue("phone", normalizedValue);
+    setPhone(normalizedValue);
   };
 
   return (
@@ -162,6 +157,8 @@ function ClientProfile({ user }: ClientProfileProps) {
                 {...register("phone")}
                 isInvalid={errors.phone ? true : undefined}
                 defaultValue={formatPhoneNumber(user.phone)}
+                value={phone}
+                onChange={handlePhoneMask}
                 className="bg-background"
                 type="text"
                 placeholder="Digite seu celular"
