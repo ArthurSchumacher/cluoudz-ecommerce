@@ -14,6 +14,7 @@ import { paths } from "@/paths";
 import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import { formatPrice } from "@/utils/formatPrice";
+import { revalidateTag } from "next/cache";
 
 interface ProductDetailsProps {
   product: SingleProduct;
@@ -70,13 +71,14 @@ function ProductDetails({ product }: ProductDetailsProps) {
       return router.push(paths.signIn());
     }
 
-    setCartProduct(addItemToCartDto);
-    handleAddProductToCart(addItemToCartDto);
+    // setCartProduct(addItemToCartDto);
+    // handleAddProductToCart(addItemToCartDto);
     await actions
       .addToCart({ productId: +product.id, amount: quantity })
       .catch((error) => {
         return toast.error("Falha ao adicionar item ao carrinho.");
       });
+    await actions.revalidateCart();
     toast.success("Item adicionado ao carrinho com sucesso.");
   };
 

@@ -28,10 +28,6 @@ function ItemContent({ item }: ItemContentProps) {
 
   const handleDeleteItemFromCart = async (e: SyntheticEvent) => {
     e.preventDefault();
-    handleRemoveProductFromCart({
-      productId: item.id,
-      amount: item.amount ? item.amount : 1,
-    });
     await actions.removeItemFromCart(item.id.toString()).catch((error: any) => {
       return toast.error(`Erro: ${error.message}`);
     });

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import * as actions from "@/actions";
 
 const signInSchema = z.object({
   email: z
@@ -46,6 +47,7 @@ export default function SignInForm() {
 
       if (result?.ok) {
         toast.success("Sucesso ao realizar login!");
+        await actions.revalidateCart();
         router.back();
       }
 

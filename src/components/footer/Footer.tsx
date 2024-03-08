@@ -63,13 +63,11 @@ async function Footer() {
               Sobre nós
             </h3>
             <p className="text-content1 antialiased text-base text-justify pb-2">
-              Somos uma loja de sexshop dedicada a oferecer uma experiência
-              única e inclusiva para todos os nossos clientes. Nossa missão é
-              proporcionar um ambiente acolhedor e discreto, onde as pessoas
-              possam explorar sua sexualidade com confiança e sem julgamentos.
-              Com uma ampla seleção de produtos cuidadosamente selecionados,
-              estamos comprometidos em atender às diversas necessidades e
-              desejos de nossos clientes.
+              Na {"H'Shop"}, nossa paixão é proporcionar uma experiência
+              excepcional aos apreciadores de tabaco em todo o mundo. Desde o
+              nosso início, nos dedicamos a oferecer uma seleção cuidadosamente
+              curada de produtos premium, combinando tradição e inovação para
+              satisfazer os gostos mais exigentes.
             </p>
             <p className="text-content1 antialiased text-base text-justify">
               &copy; {new Date().getFullYear()} {`H'shop`}. Todos os direitos

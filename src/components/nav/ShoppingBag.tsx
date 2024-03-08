@@ -1,18 +1,19 @@
-"use client";
-
 import { Button, Link } from "@nextui-org/react";
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { paths } from "@/paths";
 import { useCart } from "@/hooks/useCart";
+import * as queries from "@/queries";
 
-function ShoppingBag() {
-  const { cartTotalQuantity } = useCart();
+async function ShoppingBag() {
+  const cart = await queries.userCart().catch((error) => {
+    return undefined;
+  });
 
   return (
     <div className="relative">
       <p className="absolute bottom-0 right-0 bg-secondary rounded-full w-6 h-6 flex items-center justify-center z-10 text-sm">
-        {cartTotalQuantity}
+        {(cart && cart._count) || 0}
       </p>
       <Button
         size="lg"

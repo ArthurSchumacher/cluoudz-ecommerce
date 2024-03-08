@@ -12,13 +12,14 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
+import { Cart } from "@/types/cart";
 
 interface CartClientProps {
   products?: SingleProduct[];
+  cart?: Cart;
 }
 
-function CartClient({ products }: CartClientProps) {
-  const { handleClearCart, cartTotalValue } = useCart();
+function CartClient({ products, cart }: CartClientProps) {
   const router = useRouter();
 
   if (!products) {
@@ -42,7 +43,6 @@ function CartClient({ products }: CartClientProps) {
 
   const handleClear = async (e: SyntheticEvent) => {
     e.preventDefault();
-    handleClearCart();
     await actions.deleteCart().catch((error: any) => {
       toast.error(`Erro: ${error.message}`);
     });
@@ -80,7 +80,9 @@ function CartClient({ products }: CartClientProps) {
         <div className="text-sm flex flex-col gap-1 items-start">
           <p className="flex justify-between w-full gap-2 sm:text-base text-sm font-semibold antialiased">
             <span>Subtotal</span>
-            <span className="text-nowrap">{formatPrice(cartTotalValue)}</span>
+            <span className="text-nowrap">
+              {formatPrice(cart ? cart._subtotal : 0)}
+            </span>
           </p>
           <p className="text-content3 antialiased pb-2 sm:text-base text-xs text-justify">
             Impostos e frete calculados ao comprar

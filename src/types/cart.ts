@@ -4,7 +4,7 @@ export type Cart = {
   id: string;
   cartProduct: CartProduct[];
   _count: number;
-  _totalPrice: number;
+  _subtotal: number;
   message?: string;
 };
 

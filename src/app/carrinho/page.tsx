@@ -41,7 +41,7 @@ async function CartPage() {
     return (
       <section>
         <Container>
-          <CartClient products={products} />
+          <CartClient products={products} cart={userCart} />
         </Container>
       </section>
     );
