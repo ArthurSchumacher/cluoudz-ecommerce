@@ -22,7 +22,7 @@ function ProfileNav() {
         <Link
           href={paths.addresses()}
           className={`${
-            pathname === paths.addresses()
+            pathname.includes(paths.addresses())
               ? `bg-primary text-background`
               : `bg-content1 text-content3`
           } inline-flex items-center justify-center w-full max-w-xs p-4 border-t border-r border-l border-t-content2 border-r-content2 border-l-content2 rounded-t-md`}

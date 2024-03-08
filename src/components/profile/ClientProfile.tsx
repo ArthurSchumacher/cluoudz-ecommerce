@@ -1,7 +1,6 @@
 "use client";
 
 import React, { ChangeEvent, useState } from "react";
-import FormContainer from "../common/FormContainer";
 import { Button, Input } from "@nextui-org/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +17,7 @@ import {
   formatPhoneNumber,
   normalizePhoneNumber,
 } from "@/utils/formatPhoneNumber";
+import SmallContainer from "../common/FormContainer";
 
 interface ClientProfileProps {
   user: User;
@@ -99,8 +99,8 @@ function ClientProfile({ user }: ClientProfileProps) {
   };
 
   return (
-    <div>
-      <FormContainer>
+    <>
+      <SmallContainer>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-y-4"
@@ -282,8 +282,8 @@ function ClientProfile({ user }: ClientProfileProps) {
             </Button>
           </div>
         </form>
-      </FormContainer>
-    </div>
+      </SmallContainer>
+    </>
   );
 }
 

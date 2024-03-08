@@ -27,8 +27,8 @@ const config: Config = {
               DEFAULT: "#78716c", //STONE-500
             },
             secondary: {
-              700: "#b91c1c", //SLATE-700 -> HomeBanner
-              900: "#7f1d1d", //SLATE-900 -> HomeBanner
+              700: "#b91c1c", //RED-700 -> HomeBanner
+              900: "#7f1d1d", //RED-900 -> HomeBanner
               DEFAULT: "#ef4444", //RED-500
             },
           },

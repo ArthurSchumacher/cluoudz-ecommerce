@@ -40,4 +40,10 @@ export const paths = {
   addresses() {
     return `/perfil/enderecos`;
   },
+  createAddress() {
+    return `/perfil/enderecos/novo`;
+  },
+  updateAddress(addressId: string) {
+    return `/perfil/enderecos/${addressId}/editar`;
+  },
 };

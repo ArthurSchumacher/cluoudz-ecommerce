@@ -12,7 +12,7 @@ async function ShoppingBag() {
 
   return (
     <div className="relative">
-      <p className="absolute bottom-0 right-0 bg-secondary rounded-full w-6 h-6 flex items-center justify-center z-10 text-sm">
+      <p className="absolute bottom-0 right-0 bg-secondary rounded-full sm:w-6 sm:h-6 w-5 h-5 flex items-center justify-center z-10 sm:text-sm text-xs">
         {(cart && cart._count) || 0}
       </p>
       <Button

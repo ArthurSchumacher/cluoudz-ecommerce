@@ -1,7 +1,15 @@
+import ClientProfileAddresses from "@/components/profile/ClientProfileAddresses";
 import React from "react";
+import * as queries from "@/queries";
 
-function AddressesPage() {
-  return <div>AddressesPage</div>;
+async function AddressesPage() {
+  const addresses = await queries.userAddresses();
+
+  return (
+    <div>
+      <ClientProfileAddresses addresses={addresses} />
+    </div>
+  );
 }
 
 export default AddressesPage;

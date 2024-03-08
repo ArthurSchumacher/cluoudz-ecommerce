@@ -33,7 +33,7 @@ export default function Breadcrumb() {
           ) : null}
           {currentPath.includes("endereco") ? (
             <BreadcrumbItem href={paths.profile()}>
-              <p className="text-xl antialiased">Endereço</p>
+              <p className="text-xl antialiased">Endereços</p>
             </BreadcrumbItem>
           ) : null}
         </Breadcrumbs>

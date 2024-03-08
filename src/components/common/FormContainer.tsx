@@ -4,7 +4,7 @@ interface FormContainerProps {
   children: ReactNode;
 }
 
-function FormContainer({ children }: FormContainerProps) {
+function SmallContainer({ children }: FormContainerProps) {
   return (
     <div className="w-full mx-auto max-w-screen-md sm:py-16 py-8">
       {children}
@@ -12,4 +12,4 @@ function FormContainer({ children }: FormContainerProps) {
   );
 }
 
-export default FormContainer;
+export default SmallContainer;
