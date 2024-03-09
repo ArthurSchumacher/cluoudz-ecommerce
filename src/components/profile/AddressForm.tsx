@@ -48,6 +48,7 @@ function AddressForm({ address }: AddressFormProps) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<AddressFormFields>({
     resolver: zodResolver(addressSchema),
@@ -63,12 +64,13 @@ function AddressForm({ address }: AddressFormProps) {
         street: data.street,
         number: data.number,
         district: data.district,
-        complement: data.complement ? data.complement : undefined,
+        complement: data.complement ? data.complement : "",
         city: data.city,
         uf: data.uf,
       };
 
       if (!address) {
+        console.log(data);
         await actions.createAddress(addressDto);
       }
 
@@ -91,9 +93,16 @@ function AddressForm({ address }: AddressFormProps) {
       .then((res) => res.json())
       .then((data) => {
         setStreet(data.logradouro);
+        setValue("street", data.logradouro);
+
         setDistrict(data.bairro);
+        setValue("district", data.bairro);
+
         setCity(data.localidade);
+        setValue("city", data.localidade);
+
         setUf(data.uf);
+        setValue("uf", data.uf);
       });
   };
 
@@ -129,7 +138,7 @@ function AddressForm({ address }: AddressFormProps) {
         </p>
       ) : null}
 
-      <div className="flex sm:flex-row flex-col flex-nowrap gap-4 bg-neutral-100">
+      <div className="flex sm:flex-row flex-col flex-nowrap gap-4">
         <div className="flex-grow">
           <Input
             {...register("street")}
@@ -233,7 +242,7 @@ function AddressForm({ address }: AddressFormProps) {
         </p>
       ) : null}
 
-      <div className="flex sm:flex-row flex-col flex-nowrap gap-4 mb-8 bg-neutral-100">
+      <div className="flex sm:flex-row flex-col flex-nowrap gap-4 mb-8">
         <div className="flex-grow">
           <Input
             {...register("city")}

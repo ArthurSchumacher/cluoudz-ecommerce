@@ -9,3 +9,5 @@ export { userProfile } from "./user";
 
 export { userAddresses } from "./address";
 export { singleAddress } from "./address";
+
+export { userOrders } from "./order";

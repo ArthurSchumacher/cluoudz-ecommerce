@@ -1,3 +1,4 @@
+import Title from "@/components/Title";
 import SmallContainer from "@/components/common/FormContainer";
 import AddressForm from "@/components/profile/AddressForm";
 import * as queries from "@/queries";
@@ -15,6 +16,7 @@ async function UpdateAddressPage({ params }: UpdateAddressPageProps) {
   return (
     <section>
       <SmallContainer>
+        <Title isUpperCase label="Editar" />
         <AddressForm address={address} />
       </SmallContainer>
     </section>

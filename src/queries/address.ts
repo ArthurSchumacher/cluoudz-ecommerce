@@ -42,6 +42,9 @@ export async function singleAddress(addressId: string): Promise<Address> {
       "Content-Type": "application/json",
       Authorization: `Bearer ${session.access_token}`,
     },
+    next: {
+      tags: ["address"],
+    },
   });
 
   if (!res.ok) {

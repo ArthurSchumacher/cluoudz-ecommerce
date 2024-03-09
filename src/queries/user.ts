@@ -19,7 +19,7 @@ export async function userProfile(): Promise<User> {
   });
 
   if (!res.ok) {
-    const errorMessage = `An error has occurred: ${res.status}`;
+    const errorMessage = `An error has occurred: ${res.status} - UEX1001`;
     console.error(errorMessage);
   }
 

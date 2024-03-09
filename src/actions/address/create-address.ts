@@ -3,7 +3,9 @@
 import { nextAuthOptions } from "@/auth";
 import { paths } from "@/paths";
 import { Address, AddressDto } from "@/types/address";
+import axios from "axios";
 import { getServerSession } from "next-auth";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createAddress(addressDto: AddressDto): Promise<Address> {
@@ -12,21 +14,21 @@ export async function createAddress(addressDto: AddressDto): Promise<Address> {
     redirect(paths.signIn());
   }
 
-  const res = await fetch(`${process.env.API_URL}/address`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${session.access_token}`,
-    },
-    body: JSON.stringify(addressDto),
-  });
+  const res = axios
+    .post(`${process.env.API_URL}/address`, addressDto, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.access_token}`,
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error: any) => {
+      console.log(error.message);
+    });
 
-  if (!res.ok) {
-    const errorMessage = `An error has occurred: ${res.status}`;
-    console.error(errorMessage);
-    throw new Error(errorMessage);
-  }
+  revalidateTag("address");
 
-  const data = await res.json();
-  return data;
+  return res;
 }

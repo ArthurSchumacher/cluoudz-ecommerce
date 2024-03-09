@@ -46,4 +46,7 @@ export const paths = {
   updateAddress(addressId: string) {
     return `/perfil/enderecos/${addressId}/editar`;
   },
+  orders() {
+    return `/perfil/pedidos`;
+  },
 };

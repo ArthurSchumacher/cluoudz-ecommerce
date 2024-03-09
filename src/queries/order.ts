@@ -1,23 +1,23 @@
 "use server";
 
 import { nextAuthOptions } from "@/auth";
-import { Cart } from "@/types/cart";
+import { Order } from "@/types/order";
 import { getServerSession } from "next-auth";
 
-export async function userCart(): Promise<Cart> {
+export async function userOrders(): Promise<Order[]> {
   const session = await getServerSession(nextAuthOptions);
   if (!session) {
     throw new Error("You must be logged in!");
   }
 
-  const res = await fetch(`${process.env.API_URL}/cart`, {
+  const res = await fetch(`${process.env.API_URL}/order`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${session.access_token}`,
     },
     next: {
-      tags: ["cart"],
+      tags: ["orders"],
     },
   })
     .then(async (res) => {
@@ -25,7 +25,7 @@ export async function userCart(): Promise<Cart> {
     })
     .catch((error) => {
       console.log(
-        `An error has occured: ${error.status}: ${error.message} - CEX1001`
+        `An error has occured: ${error.status}: ${error.message} - OEX1001`
       );
     });
 

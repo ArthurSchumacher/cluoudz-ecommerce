@@ -53,94 +53,91 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
 
   return (
     <>
-      <SmallContainer>
+      <Card
+        isPressable
+        radius="sm"
+        className="py-4 w-full h-full shadow-sm border-1 border-content2 bg-content1 text-content3"
+        as={Link}
+        href={paths.createAddress()}
+      >
+        <CardBody className="flex-col items-center justify-center">
+          <FaPlus size={20} />
+          Novo endereço
+        </CardBody>
+      </Card>
+
+      {addresses.map((address, index) => (
         <Card
-          isPressable
+          key={address.id}
           radius="sm"
-          className="py-4 w-full h-full shadow-sm border-1 border-content2 bg-content1 text-content3"
-          as={Link}
-          href={paths.createAddress()}
+          className="my-4 w-full border-1 border-content2 bg-content1 text-content3 shadow-md"
         >
-          <CardBody className="flex-col items-center justify-center">
-            <FaPlus size={20} />
-            Novo endereço
-          </CardBody>
+          <CardHeader className="flex flex-row justify-between items-center">
+            <p className="sm:text-xl text-base">Endereço {index + 1}</p>
+            <div className="inline-flex items-center gap-2">
+              <Link
+                href={paths.updateAddress(address.id)}
+                className="text-warning"
+              >
+                <FaEdit size={25} />
+              </Link>
+              <Link
+                className="text-danger cursor-pointer"
+                onPress={() => handleOpen(address)}
+              >
+                <FaDeleteLeft size={25} />
+              </Link>
+            </div>
+          </CardHeader>
+          <CardFooter className="flex-col items-start">
+            <p className="text-sm antialiased font-light">
+              {address.street}, {address.number} - {address.district}
+            </p>
+            <p className="text-sm antialiased font-light">
+              {address.complement}
+            </p>
+            <p className="text-sm antialiased font-light">
+              {address.city}, {address.uf.toUpperCase()} -{" "}
+              {formatCep(address.cep.toString())}
+            </p>
+          </CardFooter>
         </Card>
+      ))}
 
-        {addresses.map((address, index) => (
-          <Card
-            key={address.id}
-            radius="sm"
-            className="my-4 w-full border-1 border-content2 bg-content1 text-content3 shadow-md"
-          >
-            <CardHeader className="flex flex-row justify-between items-center">
-              <p className="sm:text-xl text-base">Endereço {index + 1}</p>
-              <div className="inline-flex items-center gap-2">
-                <Link
-                  href={paths.updateAddress(address.id)}
-                  className="text-warning"
-                >
-                  <FaEdit size={25} />
-                </Link>
-                <Link
-                  className="text-danger cursor-pointer"
-                  onPress={() => handleOpen(address)}
-                >
-                  <FaDeleteLeft size={25} />
-                </Link>
-              </div>
-            </CardHeader>
-            <CardFooter className="flex-col items-start">
-              <p className="text-sm antialiased font-light">
-                {address.street}, {address.number} - {address.district}
-              </p>
-              <p className="text-sm antialiased font-light">
-                {address.complement}
-              </p>
-              <p className="text-sm antialiased font-light">
-                {address.city}, {address.uf.toUpperCase()} -{" "}
-                {formatCep(address.cep.toString())}
-              </p>
-            </CardFooter>
-          </Card>
-        ))}
-
-        <Modal size="lg" isOpen={isOpen} onClose={onClose}>
-          <ModalContent>
-            {(onClose) => (
-              <>
-                <ModalHeader className="flex flex-col gap-1">
-                  Deletar item
-                </ModalHeader>
-                <ModalBody>
-                  {selectedAddress && (
-                    <>
-                      <p>
-                        {selectedAddress.street}, {selectedAddress.number} -{" "}
-                        {selectedAddress.district}
-                      </p>
-                      <p>{selectedAddress.complement}</p>
-                      <p>
-                        {selectedAddress.city},{" "}
-                        {selectedAddress.uf.toUpperCase()} -{" "}
-                        {formatCep(selectedAddress.cep.toString())}
-                      </p>
-                    </>
-                  )}
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="warning" variant="ghost" onPress={onClose}>
-                    Cancelar
-                  </Button>
-                  <Button color="danger" onPress={deleteAddress}>
-                    Deletar
-                  </Button>
-                </ModalFooter>
-              </>
-            )}
-          </ModalContent>
-        </Modal>
-      </SmallContainer>
+      <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Deletar item
+              </ModalHeader>
+              <ModalBody>
+                {selectedAddress && (
+                  <>
+                    <p>
+                      {selectedAddress.street}, {selectedAddress.number} -{" "}
+                      {selectedAddress.district}
+                    </p>
+                    <p>{selectedAddress.complement}</p>
+                    <p>
+                      {selectedAddress.city}, {selectedAddress.uf.toUpperCase()}{" "}
+                      - {formatCep(selectedAddress.cep.toString())}
+                    </p>
+                  </>
+                )}
+              </ModalBody>
+              <ModalFooter>
+                <Button color="warning" variant="ghost" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="danger" onPress={deleteAddress}>
+                  Deletar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
 }

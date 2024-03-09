@@ -36,6 +36,11 @@ export default function Breadcrumb() {
               <p className="text-xl antialiased">Endereços</p>
             </BreadcrumbItem>
           ) : null}
+          {currentPath.includes("pedidos") ? (
+            <BreadcrumbItem href={paths.orders()}>
+              <p className="text-xl antialiased">Pedidos</p>
+            </BreadcrumbItem>
+          ) : null}
         </Breadcrumbs>
       </div>
     </Container>

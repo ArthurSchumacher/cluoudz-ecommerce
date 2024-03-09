@@ -17,7 +17,6 @@ import {
   formatPhoneNumber,
   normalizePhoneNumber,
 } from "@/utils/formatPhoneNumber";
-import SmallContainer from "../common/FormContainer";
 
 interface ClientProfileProps {
   user: User;
@@ -99,191 +98,184 @@ function ClientProfile({ user }: ClientProfileProps) {
   };
 
   return (
-    <>
-      <SmallContainer>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-y-4"
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4">
+      <Input
+        {...register("name")}
+        isInvalid={errors.name ? true : undefined}
+        defaultValue={user.name}
+        className="bg-background"
+        type="text"
+        placeholder="Digite seu nome e sobrenome"
+        label="Nome"
+        labelPlacement="outside"
+        variant="bordered"
+        size="lg"
+        radius="sm"
+        classNames={{
+          input: `placeholder:text-content2 antialiased`,
+        }}
+      />
+
+      {errors.name ? (
+        <p className="px-2 -mt-4 text-danger text-sm font-light">
+          {errors.name.message}
+        </p>
+      ) : null}
+
+      <Input
+        {...register("email")}
+        isInvalid={errors.email ? true : undefined}
+        defaultValue={user.email}
+        className="bg-background"
+        type="text"
+        placeholder="Digite seu e-mail"
+        label="Email"
+        labelPlacement="outside"
+        variant="bordered"
+        size="lg"
+        radius="sm"
+        classNames={{
+          input: `placeholder:text-content2 antialiased`,
+        }}
+      />
+
+      {errors.email ? (
+        <p className="px-2 -mt-4 text-danger text-sm font-light">
+          {errors.email.message}
+        </p>
+      ) : null}
+
+      <div className="flex sm:flex-row flex-col flex-nowrap gap-4">
+        <div className="sm:w-1/2 w-full">
+          <Input
+            {...register("phone")}
+            isInvalid={errors.phone ? true : undefined}
+            defaultValue={formatPhoneNumber(user.phone)}
+            value={phone}
+            onChange={handlePhoneMask}
+            className="bg-background"
+            type="text"
+            placeholder="Digite seu celular"
+            label="DDD + Celular"
+            labelPlacement="outside"
+            variant="bordered"
+            size="lg"
+            radius="sm"
+            classNames={{
+              input: `placeholder:text-content2 antialiased`,
+            }}
+          />
+
+          {errors.phone ? (
+            <p className="px-2 text-danger text-sm font-light">
+              {errors.phone.message}
+            </p>
+          ) : null}
+        </div>
+
+        <Input
+          isInvalid={undefined}
+          defaultValue={formatCpf(user.cpf)}
+          isDisabled
+          className="bg-background sm:w-1/2 w-full"
+          type="text"
+          label="CPF"
+          labelPlacement="outside"
+          variant="bordered"
+          size="lg"
+          radius="sm"
+          classNames={{
+            input: `placeholder:text-content2 antialiased`,
+          }}
+        />
+      </div>
+
+      <div className="flex sm:flex-row flex-col gap-4">
+        <div className="sm:w-1/2 w-full">
+          <Input
+            {...register("password")}
+            isInvalid={errors.password ? true : undefined}
+            className="bg-background"
+            type="password"
+            placeholder="Sua senha"
+            label="Senha"
+            labelPlacement="outside"
+            variant="bordered"
+            size="lg"
+            radius="sm"
+            classNames={{
+              input: `placeholder:text-content2 antialiased`,
+            }}
+          />
+          {errors.password ? (
+            <p className="px-2 text-danger text-sm font-light">
+              {errors.password.message}
+            </p>
+          ) : null}
+        </div>
+
+        <div className="sm:w-1/2 w-full">
+          <Input
+            {...register("c_password")}
+            isInvalid={errors.c_password ? true : undefined}
+            className="bg-background"
+            type="password"
+            placeholder="Confirme sua senha"
+            label="Confirmar a senha"
+            labelPlacement="outside"
+            variant="bordered"
+            size="lg"
+            radius="sm"
+            classNames={{
+              input: `placeholder:text-content2 antialiased`,
+            }}
+          />
+
+          {errors.c_password ? (
+            <p className="px-2 text-danger text-sm font-light">
+              {errors.c_password.message}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      <ul className="w-full pl-2 flex flex-col">
+        <p className="text-sm pb-2">Padrão de senha:</p>
+        <li className="text-xs pl-2 inline-flex items-center">
+          <LuDot size={32} />
+          Mínimo 8 caracteres
+        </li>
+        <li className="text-xs pl-2 inline-flex items-center">
+          <LuDot size={32} />
+          Letra Minúscula
+        </li>
+        <li className="text-xs pl-2 inline-flex items-center">
+          <LuDot size={32} />
+          Letra Maiúscula
+        </li>
+        <li className="text-xs pl-2 inline-flex items-center">
+          <LuDot size={32} />
+          Números
+        </li>
+        <li className="text-xs pl-2 inline-flex items-center">
+          <LuDot size={32} />
+          Carácter especial
+        </li>
+      </ul>
+
+      <div className="sm:ml-auto">
+        <Button
+          type="submit"
+          isLoading={isSubmitting}
+          className="text-neutral-50 sm:w-64 w-full"
+          color="success"
+          size="lg"
+          radius="sm"
         >
-          <Input
-            {...register("name")}
-            isInvalid={errors.name ? true : undefined}
-            defaultValue={user.name}
-            className="bg-background"
-            type="text"
-            placeholder="Digite seu nome e sobrenome"
-            label="Nome"
-            labelPlacement="outside"
-            variant="bordered"
-            size="lg"
-            radius="sm"
-            classNames={{
-              input: `placeholder:text-content2 antialiased`,
-            }}
-          />
-
-          {errors.name ? (
-            <p className="px-2 -mt-4 text-danger text-sm font-light">
-              {errors.name.message}
-            </p>
-          ) : null}
-
-          <Input
-            {...register("email")}
-            isInvalid={errors.email ? true : undefined}
-            defaultValue={user.email}
-            className="bg-background"
-            type="text"
-            placeholder="Digite seu e-mail"
-            label="Email"
-            labelPlacement="outside"
-            variant="bordered"
-            size="lg"
-            radius="sm"
-            classNames={{
-              input: `placeholder:text-content2 antialiased`,
-            }}
-          />
-
-          {errors.email ? (
-            <p className="px-2 -mt-4 text-danger text-sm font-light">
-              {errors.email.message}
-            </p>
-          ) : null}
-
-          <div className="flex sm:flex-row flex-col flex-nowrap gap-4">
-            <div className="sm:w-1/2 w-full">
-              <Input
-                {...register("phone")}
-                isInvalid={errors.phone ? true : undefined}
-                defaultValue={formatPhoneNumber(user.phone)}
-                value={phone}
-                onChange={handlePhoneMask}
-                className="bg-background"
-                type="text"
-                placeholder="Digite seu celular"
-                label="DDD + Celular"
-                labelPlacement="outside"
-                variant="bordered"
-                size="lg"
-                radius="sm"
-                classNames={{
-                  input: `placeholder:text-content2 antialiased`,
-                }}
-              />
-
-              {errors.phone ? (
-                <p className="px-2 text-danger text-sm font-light">
-                  {errors.phone.message}
-                </p>
-              ) : null}
-            </div>
-
-            <Input
-              isInvalid={undefined}
-              defaultValue={formatCpf(user.cpf)}
-              isDisabled
-              className="bg-background sm:w-1/2 w-full"
-              type="text"
-              label="CPF"
-              labelPlacement="outside"
-              variant="bordered"
-              size="lg"
-              radius="sm"
-              classNames={{
-                input: `placeholder:text-content2 antialiased`,
-              }}
-            />
-          </div>
-
-          <div className="flex sm:flex-row flex-col gap-4">
-            <div className="sm:w-1/2 w-full">
-              <Input
-                {...register("password")}
-                isInvalid={errors.password ? true : undefined}
-                className="bg-background"
-                type="password"
-                placeholder="Sua senha"
-                label="Senha"
-                labelPlacement="outside"
-                variant="bordered"
-                size="lg"
-                radius="sm"
-                classNames={{
-                  input: `placeholder:text-content2 antialiased`,
-                }}
-              />
-              {errors.password ? (
-                <p className="px-2 text-danger text-sm font-light">
-                  {errors.password.message}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="sm:w-1/2 w-full">
-              <Input
-                {...register("c_password")}
-                isInvalid={errors.c_password ? true : undefined}
-                className="bg-background"
-                type="password"
-                placeholder="Confirme sua senha"
-                label="Confirmar a senha"
-                labelPlacement="outside"
-                variant="bordered"
-                size="lg"
-                radius="sm"
-                classNames={{
-                  input: `placeholder:text-content2 antialiased`,
-                }}
-              />
-
-              {errors.c_password ? (
-                <p className="px-2 text-danger text-sm font-light">
-                  {errors.c_password.message}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <ul className="w-full pl-2 flex flex-col">
-            <p className="text-sm pb-2">Padrão de senha:</p>
-            <li className="text-xs pl-2 inline-flex items-center">
-              <LuDot size={32} />
-              Mínimo 8 caracteres
-            </li>
-            <li className="text-xs pl-2 inline-flex items-center">
-              <LuDot size={32} />
-              Letra Minúscula
-            </li>
-            <li className="text-xs pl-2 inline-flex items-center">
-              <LuDot size={32} />
-              Letra Maiúscula
-            </li>
-            <li className="text-xs pl-2 inline-flex items-center">
-              <LuDot size={32} />
-              Números
-            </li>
-            <li className="text-xs pl-2 inline-flex items-center">
-              <LuDot size={32} />
-              Carácter especial
-            </li>
-          </ul>
-
-          <div className="sm:ml-auto">
-            <Button
-              type="submit"
-              isLoading={isSubmitting}
-              className="text-neutral-50 sm:w-64 w-full"
-              color="success"
-              size="lg"
-              radius="sm"
-            >
-              Salvar
-            </Button>
-          </div>
-        </form>
-      </SmallContainer>
-    </>
+          Salvar
+        </Button>
+      </div>
+    </form>
   );
 }
 

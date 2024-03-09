@@ -17,14 +17,14 @@ const config: Config = {
           colors: {
             background: "#fafaf9", //STONE-50 -> PageBackground
             foreground: "#0c0a09", //STONE-950 -> PageText, Title, Hover:SetQuantityBorder
-            content1: "#f5f5f4", //STONE-100 -> Navbar, HomeBannerText SignIn
+            content1: "#f5f5f4", //STONE-100 -> Profile Navbar Background, HomeBanner Text, SignIn
             content2: "#d6d3d1", //STONE-300 -> TitleLines, SetQuantityBorder
             content3: "#57534e", //STONE-600 -> Texts and Borders
             primary: {
               700: "#44403c", //STONE-700 -> CategoriesBanner, Footer
-              800: "#292524", //STONE-800 -> Navbar and ContactNav
+              800: "#292524", //STONE-800 -> Navbar and ContactNav, onHover categories
               900: "#1c1917", //STONE-900
-              DEFAULT: "#78716c", //STONE-500
+              DEFAULT: "#78716c", //STONE-500 -> Active profile navbar
             },
             secondary: {
               700: "#b91c1c", //RED-700 -> HomeBanner
