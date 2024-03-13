@@ -2,8 +2,7 @@
 
 import { nextAuthOptions } from "@/auth";
 import { paths } from "@/paths";
-import { ProductToFavoriteDto } from "@/types/cart";
-import { SingleFavorite } from "@/types/favorite";
+import { ProductToFavoriteDto, SingleFavorite } from "@/types/favorite";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 

@@ -3,11 +3,21 @@ import * as queries from "@/queries";
 import Container from "@/components/common/Container";
 import Empty from "@/components/profile/EmptyOrders";
 import ClientFavorites from "@/components/favorites/ClientFavorites";
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "@/auth";
 
 async function FavoritesPage() {
-  const favorites = await queries.userFavorites();
+  const session = await getServerSession(nextAuthOptions);
+  const favorites = await queries.userFavorites().catch((e) => {
+    return null;
+  });
 
-  if (favorites.message || favorites.favoriteProduct.length == 0) {
+  if (
+    !session ||
+    !favorites ||
+    favorites.message ||
+    favorites.favoriteProduct.length == 0
+  ) {
     return (
       <section>
         <Container>
