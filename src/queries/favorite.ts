@@ -1,23 +1,24 @@
 "use server";
 
 import { nextAuthOptions } from "@/auth";
-import { Order } from "@/types/order";
+import { ApiError } from "@/types/error";
+import { Favorite } from "@/types/favorite";
 import { getServerSession } from "next-auth";
 
-export async function userOrders(): Promise<Order[] | any> {
+export async function userFavorites(): Promise<Favorite> {
   const session = await getServerSession(nextAuthOptions);
   if (!session) {
     throw new Error("You must be logged in!");
   }
 
-  const res = await fetch(`${process.env.API_URL}/order`, {
+  const res = await fetch(`${process.env.API_URL}/favorite`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${session.access_token}`,
     },
     next: {
-      tags: ["orders"],
+      tags: ["favorites"],
     },
   })
     .then(async (res) => {
@@ -25,7 +26,7 @@ export async function userOrders(): Promise<Order[] | any> {
     })
     .catch((error) => {
       console.log(
-        `An error has occured: ${error.status}: ${error.message} - OEX1001`
+        `An error has occured: ${error.status}: ${error.message} - FEX1001`
       );
     });
 

@@ -3,9 +3,20 @@ import SmallContainer from "@/components/common/FormContainer";
 import ClientProfileOrders from "@/components/profile/ClientProfileOrders";
 import React from "react";
 import * as queries from "@/queries";
+import Empty from "@/components/profile/EmptyOrders";
 
 async function OrdersPage() {
   const orders = await queries.userOrders();
+
+  if (!orders) {
+    return (
+      <section>
+        <SmallContainer>
+          <Empty message="Você não possui ordens de compra." />
+        </SmallContainer>
+      </section>
+    );
+  }
 
   for (const order of orders) {
     const orderProducts = order.orderProduct;

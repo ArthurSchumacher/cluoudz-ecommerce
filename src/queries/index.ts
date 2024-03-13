@@ -11,3 +11,5 @@ export { userAddresses } from "./address";
 export { singleAddress } from "./address";
 
 export { userOrders } from "./order";
+
+export { userFavorites } from "./favorite";

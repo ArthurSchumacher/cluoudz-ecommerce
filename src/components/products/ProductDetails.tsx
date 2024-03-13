@@ -15,6 +15,8 @@ import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import { formatPrice } from "@/utils/formatPrice";
 import { revalidateTag } from "next/cache";
+import { FaRegHeart } from "react-icons/fa";
+import { ProductToFavoriteDto } from "@/types/favorite";
 
 interface ProductDetailsProps {
   product: SingleProduct;
@@ -57,6 +59,20 @@ function ProductDetails({ product }: ProductDetailsProps) {
   const handleQtyDecrease = () => {
     if (quantity <= 1) return;
     setQuantity(quantity - 1);
+  };
+
+  const handleAddToFavorites = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    const addItemToFavorites: ProductToFavoriteDto = {
+      productId: +product.id,
+    };
+
+    if (session.status === "unauthenticated") {
+      return router.push(paths.signIn());
+    }
+
+    await actions.addToFavorite(addItemToFavorites);
+    toast.success("Item adicionado aos favoritos com sucesso.");
   };
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -117,48 +133,38 @@ function ProductDetails({ product }: ProductDetailsProps) {
           {product.stock > 0 ? "Em estoque." : "Sem estoque."}
         </div>
         <Horizontal />
-        {isProductInCart ? (
-          <>
-            <p className="mb-2 text-content3 antialiased gap-2 inline-flex items-center">
-              <MdCheckCircle className="text-green-400" size={20} />
-              <span>Produto adicionado ao carrinho.</span>
-            </p>
-            <div className="max-w-[30%]">
-              <Button
-                as={Link}
-                href={paths.cart()}
-                size="lg"
-                radius="sm"
-                color="success"
-                variant="solid"
-                className="text-content1"
-              >
-                Abrir carrinho
-              </Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <SetQuantity
-              cartCounter
-              quantity={quantity}
-              handleQuantityDecrease={handleQtyDecrease}
-              handleQuantityIncrease={handleQtyIncrease}
-            />
-            <Horizontal />
-            <div className="max-w-[30%]">
-              <Button
-                onClick={handleSubmit}
-                size="lg"
-                radius="sm"
-                color="secondary"
-                variant="solid"
-              >
-                Adicionar ao carrinho
-              </Button>
-            </div>
-          </>
-        )}
+        <SetQuantity
+          cartCounter
+          quantity={quantity}
+          handleQuantityDecrease={handleQtyDecrease}
+          handleQuantityIncrease={handleQtyIncrease}
+        />
+        <Horizontal />
+        <div className="flex gap-x-4">
+          <div className="max-w-[30%]">
+            <Button
+              onClick={handleSubmit}
+              size="lg"
+              radius="sm"
+              color="secondary"
+              variant="solid"
+            >
+              Adicionar ao carrinho
+            </Button>
+          </div>
+          <form onSubmit={handleAddToFavorites}>
+            <Button
+              type="submit"
+              size="lg"
+              radius="sm"
+              color="danger"
+              variant="solid"
+              isIconOnly
+            >
+              <FaRegHeart size={20} />
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ function MainNav({ categories }: MainNavProps) {
             <Button
               size="lg"
               as={Link}
-              href="#"
+              href={paths.profile()}
               isIconOnly
               variant="flat"
               className="bg-transparent text-content1 flex lg:hidden"
@@ -44,7 +44,7 @@ function MainNav({ categories }: MainNavProps) {
               size="lg"
               isIconOnly
               as={Link}
-              href="#"
+              href={paths.favorites()}
               variant="flat"
               className="bg-transparent text-content1"
             >
