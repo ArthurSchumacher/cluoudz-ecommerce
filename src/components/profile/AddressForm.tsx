@@ -78,7 +78,7 @@ function AddressForm({ address }: AddressFormProps) {
         await actions.updateAddress(address.id, addressDto);
       }
 
-      router.push(paths.addresses());
+      router.back();
     } catch (error) {
       toast.error("Falha ao criar/modificar endereço.");
     }

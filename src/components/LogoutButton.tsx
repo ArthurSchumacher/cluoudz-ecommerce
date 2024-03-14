@@ -10,17 +10,15 @@ import * as actions from "@/actions";
 
 function LogoutButton() {
   const router = useRouter();
-  const { handleClearCart } = useCart();
 
   async function logout() {
     await signOut({
       redirect: false,
     });
 
-    handleClearCart();
-    router.push(paths.signIn());
     await actions.revalidateCart();
     toast.success("Logout realizado com sucesso!");
+    router.refresh();
   }
 
   return (

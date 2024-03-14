@@ -8,7 +8,7 @@ import Empty from "@/components/profile/EmptyOrders";
 async function OrdersPage() {
   const orders = await queries.userOrders();
 
-  if (!orders) {
+  if (!orders || orders.message) {
     return (
       <section>
         <SmallContainer>

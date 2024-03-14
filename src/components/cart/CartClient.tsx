@@ -10,7 +10,6 @@ import ItemContent from "./ItemContent";
 import * as actions from "@/actions";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
 import { Cart } from "@/types/cart";
 
@@ -92,6 +91,8 @@ function CartClient({ products, cart }: CartClientProps) {
             color="primary"
             variant="solid"
             className="w-full"
+            as={Link}
+            href={paths.checkout()}
           >
             Checkout
           </Button>

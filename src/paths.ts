@@ -32,6 +32,9 @@ export const paths = {
   product(id: string) {
     return `/produto/${id}`;
   },
+  checkout() {
+    return `/comprar`;
+  },
   whatsApp() {
     return "";
   },
