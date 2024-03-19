@@ -20,7 +20,6 @@ interface CartClientProps {
 
 function CartClient({ products, cart }: CartClientProps) {
   const router = useRouter();
-
   if (!products) {
     return (
       <div className="flex flex-col items-center py-16">

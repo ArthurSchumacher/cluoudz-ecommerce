@@ -64,13 +64,13 @@ function AddressSidebar({ addresses, address, onSelect }: AddressSidebarProps) {
               }}
               key={address.id}
               radius="sm"
-              className="my-4 w-full border-1 border-content2 bg-content1 text-content3 shadow-md"
+              className="my-4 w-full border-1 border-content2 bg-background text-content3 shadow-md"
             >
-              <CardHeader className="flex flex-row justify-between items-center">
+              <CardHeader className="flex flex-row justify-between items-center -mb-4">
                 <p className="sm:text-xl text-base">Endereço {index + 1}</p>
               </CardHeader>
               <CardFooter className="flex-col items-start">
-                <p className="text-sm antialiased font-light">
+                <p className="text-sm antialiased font-light text-start">
                   {address.street}, {address.number} - {address.district}
                 </p>
                 <p className="text-sm antialiased font-light">

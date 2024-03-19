@@ -1,13 +1,10 @@
 "use client";
-import { paths } from "@/paths";
 import { Order } from "@/types/order";
-import { OrderProduct } from "@/types/orderProduct";
-import { Product, SingleProduct } from "@/types/product";
 import { formatCep } from "@/utils/formatCep";
 import { formatOrderId } from "@/utils/formatOrderId";
 import { formatPrice } from "@/utils/formatPrice";
 import { truncateText } from "@/utils/truncateText";
-import { Accordion, AccordionItem, Link } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 import React from "react";
 
@@ -20,7 +17,7 @@ function ClientProfileOrders({ orders }: ClientProfileOrdersProps) {
     <Accordion
       variant="splitted"
       itemClasses={{
-        base: "border border-content2",
+        base: "border border-content2 group-[.is-splitted]:bg-background",
       }}
     >
       {orders.map((order) => {

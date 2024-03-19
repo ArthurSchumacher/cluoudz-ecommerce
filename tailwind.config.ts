@@ -17,19 +17,19 @@ const config: Config = {
           colors: {
             background: "#fafaf9", //STONE-50 -> PageBackground
             foreground: "#0c0a09", //STONE-950 -> PageText, Title, Hover:SetQuantityBorder
-            content1: "#f5f5f4", //STONE-100 -> Profile Navbar Background, HomeBanner Text, SignIn
+            content1: "#292524", //STONE-900 -> Profile Navbar Background, HomeBanner Text, SignIn
             content2: "#d6d3d1", //STONE-300 -> TitleLines, SetQuantityBorder
             content3: "#57534e", //STONE-600 -> Texts and Borders
             primary: {
-              700: "#44403c", //STONE-700 -> CategoriesBanner, Footer
-              800: "#292524", //STONE-800 -> Navbar and ContactNav, onHover categories
+              700: "#facc15", //YELLOW-400 -> CategoriesNavbar, Footer
+              800: "#e7e5e4", //STONE-200 -> Navbar and ContactNav, onHover categories
               900: "#1c1917", //STONE-900
-              DEFAULT: "#78716c", //STONE-500 -> Active profile navbar
+              DEFAULT: "#0369a1", //STONE-500 -> Active profile navbar
             },
             secondary: {
-              700: "#b91c1c", //RED-700 -> HomeBanner
-              900: "#7f1d1d", //RED-900 -> HomeBanner
-              DEFAULT: "#ef4444", //RED-500
+              700: "#0369a1", //SKY-700 -> HomeBanner
+              900: "#0c4a6e", //SKY-900 -> HomeBanner
+              DEFAULT: "#0ea5e9", //RED-500
             },
           },
         },

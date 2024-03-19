@@ -15,3 +15,5 @@ export { deleteCart } from "../actions/cart/delete-cart";
 export { addToFavorite } from "../actions/favorite/add-to-favorite";
 export { clearFavorites } from "../actions/favorite/clear-favorites";
 export { removeFromFavorites } from "../actions/favorite/remove-from-favorites";
+
+export { createPaymentIntent } from "./order/create-payment-intent";

@@ -11,7 +11,7 @@ function SignUpPage() {
         <Breadcrumb />
         <div className="flex flex-col sm:flex-row gap-14">
           <div className="w-full sm:w-1/2">
-            <Card>
+            <Card className="bg-background">
               <CardHeader className="text-2xl font-extralight text-primary">
                 Crie sua conta
               </CardHeader>

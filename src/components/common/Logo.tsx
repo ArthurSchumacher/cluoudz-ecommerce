@@ -8,7 +8,7 @@ function Logo() {
       href={paths.home()}
       className="sm:text-5xl text-2xl font-bold text-content1 antialiased"
     >
-      {`H'SHOP`}
+      {`CLOUD'S`}
     </Link>
   );
 }

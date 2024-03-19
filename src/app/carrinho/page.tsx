@@ -12,7 +12,12 @@ async function CartPage() {
     return null;
   });
 
-  if (!session || !userCart || userCart.message) {
+  if (
+    !session ||
+    !userCart ||
+    userCart.message ||
+    userCart.cartProduct.length === 0
+  ) {
     return (
       <section>
         <Container>
