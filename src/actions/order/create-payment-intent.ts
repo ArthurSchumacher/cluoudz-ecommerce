@@ -61,7 +61,10 @@ export async function createPaymentIntent(data: PaymentIntentDto) {
         { amount: total }
       );
 
-      return updated_intent;
+      return {
+        id: updated_intent.id,
+        client_secret: updated_intent.client_secret,
+      };
     }
   } else {
     const paymentIntent = await stripe.paymentIntents.create({
@@ -70,6 +73,6 @@ export async function createPaymentIntent(data: PaymentIntentDto) {
       automatic_payment_methods: { enabled: true },
     });
 
-    return paymentIntent;
+    return { id: paymentIntent.id, client_secret: paymentIntent.client_secret };
   }
 }

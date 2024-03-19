@@ -52,34 +52,22 @@ function ClientCheckout({ products, addresses }: CheckoutClientProps) {
     const shopPaymentIntent: string | null =
       localStorage.getItem("paymentIntentId");
 
-    if (!shopPaymentIntent) {
+    const createAndUpdatePaymentIntent = (payment_intent_id: string | null) => {
       actions
-        .createPaymentIntent({ payment_intent_id: null })
-        .then((res) => {
-          return res;
-        })
+        .createPaymentIntent({ payment_intent_id })
+        .then((res) => res)
         .then((data: any) => {
           if (data) {
             handleSetPaymentIntent(data.id);
             setClientSecret(data.client_secret);
           }
         });
-    } else {
-      actions
-        .createPaymentIntent({
-          payment_intent_id: JSON.parse(shopPaymentIntent),
-        })
-        .then((res) => {
-          return res;
-        })
-        .then((data: any) => {
-          if (data) {
-            handleSetPaymentIntent(data.id);
-            setClientSecret(data.client_secret);
-          }
-        });
-    }
-  }, []);
+    };
+
+    !shopPaymentIntent
+      ? createAndUpdatePaymentIntent(null)
+      : createAndUpdatePaymentIntent(JSON.parse(shopPaymentIntent));
+  }, [handleSetPaymentIntent]);
 
   const onSubmit: SubmitHandler<CheckoutFormFields> = async (data) => {
     try {
