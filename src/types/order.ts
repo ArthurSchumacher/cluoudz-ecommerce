@@ -13,3 +13,9 @@ export type Order = {
   payment: Payment;
   status: Status;
 };
+
+export type OrderDto = {
+  addressId: string;
+  payment_intent_id: string;
+  date_payment: Date;
+};

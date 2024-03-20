@@ -2,7 +2,6 @@ import { Address } from "@/types/address";
 import { SingleProduct } from "@/types/product";
 import { formatCep } from "@/utils/formatCep";
 import { formatPrice } from "@/utils/formatPrice";
-import { Button } from "@nextui-org/react";
 import React from "react";
 
 interface OrderDetailsProps {

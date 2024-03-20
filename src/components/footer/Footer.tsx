@@ -63,14 +63,14 @@ async function Footer() {
               Sobre nós
             </h3>
             <p className="text-content1 antialiased text-base text-justify pb-2">
-              Na {"H'Shop"}, nossa paixão é proporcionar uma experiência
+              Na {"Cloud's"}, nossa paixão é proporcionar uma experiência
               excepcional aos apreciadores de tabaco em todo o mundo. Desde o
               nosso início, nos dedicamos a oferecer uma seleção cuidadosamente
               curada de produtos premium, combinando tradição e inovação para
               satisfazer os gostos mais exigentes.
             </p>
             <p className="text-content1 antialiased text-base text-justify">
-              &copy; {new Date().getFullYear()} {`H'shop`}. Todos os direitos
+              &copy; {new Date().getFullYear()} {`Cloud's`}. Todos os direitos
               reservados.
             </p>
           </div>

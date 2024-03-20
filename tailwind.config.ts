@@ -17,7 +17,7 @@ const config: Config = {
           colors: {
             background: "#fafaf9", //STONE-50 -> PageBackground
             foreground: "#0c0a09", //STONE-950 -> PageText, Title, Hover:SetQuantityBorder
-            content1: "#292524", //STONE-900 -> Profile Navbar Background, HomeBanner Text, SignIn
+            content1: "#292524", //STONE-200 -> Profile Navbar Background, HomeBanner Text, SignIn
             content2: "#d6d3d1", //STONE-300 -> TitleLines, SetQuantityBorder
             content3: "#57534e", //STONE-600 -> Texts and Borders
             primary: {

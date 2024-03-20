@@ -11,6 +11,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@nextui-org/react": "^2.2.9",
+    "@stripe/react-stripe-js": "^2.6.2",
     "@stripe/stripe-js": "^3.0.10",
     "axios": "^1.6.7",
     "framer-motion": "^11.0.8",
