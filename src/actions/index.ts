@@ -16,4 +16,5 @@ export { addToFavorite } from "../actions/favorite/add-to-favorite";
 export { clearFavorites } from "../actions/favorite/clear-favorites";
 export { removeFromFavorites } from "../actions/favorite/remove-from-favorites";
 
+export { placeOrder } from "./order/place-order";
 export { createPaymentIntent } from "./order/create-payment-intent";

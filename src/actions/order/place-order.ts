@@ -8,7 +8,7 @@ import axios from "axios";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export async function addToCart(orderDto: OrderDto): Promise<Order> {
+export async function placeOrder(orderDto: OrderDto): Promise<Order> {
   const session = await getServerSession(nextAuthOptions);
   if (!session || !session.user) {
     redirect(paths.signIn());

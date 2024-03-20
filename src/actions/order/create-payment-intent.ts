@@ -69,7 +69,7 @@ export async function createPaymentIntent(data: PaymentIntentDto) {
   } else {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total,
-      currency: "BRL*",
+      currency: "BRL",
       automatic_payment_methods: { enabled: true },
     });
 

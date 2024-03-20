@@ -18,6 +18,9 @@ import AddressSidebar from "./AddressSidebar";
 import toast from "react-hot-toast";
 import { Address } from "@/types/address";
 import PaymentSuccess from "./PaymentSuccess";
+import { OrderDto } from "@/types/order";
+import { useCart } from "@/hooks/useCart";
+import * as actions from "@/actions";
 
 const checkoutSchema = z.object({
   addressId: z.string().optional(),
@@ -47,10 +50,10 @@ function CheckoutForm({
   const elements = useElements();
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [address, setAddress] = useState<Address>(addresses[0]);
+  const { handleSetPaymentIntent } = useCart();
 
   const handleSetPaymentSuccess = useCallback((value: boolean) => {
     setPaymentSuccess(value);
-    toast.success("Sucesso ao realizar pagamento!");
   }, []);
 
   useEffect(() => {
@@ -69,6 +72,30 @@ function CheckoutForm({
       if (!stripe || !elements) {
         return;
       }
+
+      data.addressId = address.id;
+      data.paymentIntentId = localStorage.getItem("paymentIntentId") as string;
+
+      const orderDto: OrderDto = {
+        addressId: data.addressId,
+        payment_intent_id: data.paymentIntentId,
+        date_payment: new Date(Date.now()),
+      };
+
+      stripe
+        .confirmPayment({
+          elements,
+          redirect: "if_required",
+        })
+        .then((result) => {
+          if (!result.error) {
+            toast.success("Pagamento efetuado com sucesso!");
+            handleSetPaymentSuccess(true);
+            handleSetPaymentIntent(null);
+          }
+        });
+
+      await actions.placeOrder(orderDto);
     } catch (error) {
       toast.error("Falha ao realizar checkout.");
     }
@@ -119,7 +146,7 @@ function CheckoutForm({
             }}
           />
         </div>
-        {clientSecret && (
+        {clientSecret && !paymentSuccess && (
           <>
             <div className="border border-content4 rounded-md bg-background p-4 shadow-md">
               <OrderDetails products={products} address={address} />
@@ -148,7 +175,7 @@ function CheckoutForm({
             <Button
               size="lg"
               radius="sm"
-              className="w-full"
+              className="w-full text-background"
               color="success"
               variant="solid"
               as={Link}

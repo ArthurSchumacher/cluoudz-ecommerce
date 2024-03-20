@@ -8,6 +8,7 @@ import { z } from "zod";
 import * as actions from "@/actions";
 import { useCart } from "@/hooks/useCart";
 import CheckoutForm from "./CheckoutForm";
+import { Spinner } from "@nextui-org/react";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -63,6 +64,11 @@ function ClientCheckout({ products, addresses }: CheckoutClientProps) {
             addresses={addresses}
           />
         </Elements>
+      )}
+      {!clientSecret && (
+        <div className="w-full flex items-center justify-center py-16">
+          <Spinner />
+        </div>
       )}
     </>
   );

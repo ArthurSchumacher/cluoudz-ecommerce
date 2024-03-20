@@ -6,7 +6,9 @@ import * as queries from "@/queries";
 import Empty from "@/components/profile/EmptyOrders";
 
 async function OrdersPage() {
-  const orders = await queries.userOrders();
+  const orders = await queries.userOrders().then((res) => {
+    return res.reverse();
+  });
 
   if (!orders || orders.message) {
     return (
