@@ -56,7 +56,7 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
       <Card
         isPressable
         radius="sm"
-        className="py-4 w-full h-full border-1 border-content2 bg-background text-content3 shadow-md"
+        className="py-4 w-full h-full border-1 border-content2 bg-content2 text-content1 shadow-md"
         as={Link}
         href={paths.createAddress()}
       >
@@ -70,7 +70,7 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
         <Card
           key={address.id}
           radius="sm"
-          className="my-4 w-full border-1 border-content2 bg-background text-content3 shadow-md"
+          className="my-4 w-full border-1 border-content2 bg-content2 text-content1 shadow-md"
         >
           <CardHeader className="flex flex-row justify-between items-center">
             <p className="sm:text-xl text-base">Endereço {index + 1}</p>
@@ -105,7 +105,7 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
       ))}
 
       <Modal size="lg" isOpen={isOpen} onClose={onClose}>
-        <ModalContent className="bg-background">
+        <ModalContent className="bg-content2">
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">

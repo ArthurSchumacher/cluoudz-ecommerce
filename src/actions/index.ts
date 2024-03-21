@@ -18,3 +18,5 @@ export { removeFromFavorites } from "../actions/favorite/remove-from-favorites";
 
 export { placeOrder } from "./order/place-order";
 export { createPaymentIntent } from "./order/create-payment-intent";
+
+export { search } from "./search/search";

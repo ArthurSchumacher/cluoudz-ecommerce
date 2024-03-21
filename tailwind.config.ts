@@ -15,21 +15,21 @@ const config: Config = {
       themes: {
         light: {
           colors: {
-            background: "#fafaf9", //STONE-50 -> PageBackground
-            foreground: "#0c0a09", //STONE-950 -> PageText, Title, Hover:SetQuantityBorder
-            content1: "#292524", //STONE-200 -> Profile Navbar Background, HomeBanner Text, SignIn
-            content2: "#d6d3d1", //STONE-300 -> TitleLines, SetQuantityBorder
-            content3: "#57534e", //STONE-600 -> Texts and Borders
+            background: "#fffff1",
+            foreground: "#0c0a09",
+            content1: "#292524",
+            content2: "#fafafa",
+            content3: "#57534e",
             primary: {
-              700: "#facc15", //YELLOW-400 -> CategoriesNavbar, Footer
-              800: "#e7e5e4", //STONE-200 -> Navbar and ContactNav, onHover categories
-              900: "#1c1917", //STONE-900
-              DEFAULT: "#0369a1", //STONE-500 -> Active profile navbar
+              700: "#3a6319",
+              800: "#fffff1",
+              900: "#1c1917",
+              DEFAULT: "#3a6319",
             },
             secondary: {
-              700: "#0369a1", //SKY-700 -> HomeBanner
-              900: "#0c4a6e", //SKY-900 -> HomeBanner
-              DEFAULT: "#0ea5e9", //RED-500
+              700: "#f6e092",
+              900: "#eec634",
+              DEFAULT: "#f2d363", //RED-500
             },
           },
         },

@@ -103,7 +103,7 @@ function ClientProfile({ user }: ClientProfileProps) {
         {...register("name")}
         isInvalid={errors.name ? true : undefined}
         defaultValue={user.name}
-        className="bg-background"
+        className="bg-content2"
         type="text"
         placeholder="Digite seu nome e sobrenome"
         label="Nome"
@@ -126,7 +126,7 @@ function ClientProfile({ user }: ClientProfileProps) {
         {...register("email")}
         isInvalid={errors.email ? true : undefined}
         defaultValue={user.email}
-        className="bg-background"
+        className="bg-content2"
         type="text"
         placeholder="Digite seu e-mail"
         label="Email"
@@ -153,7 +153,7 @@ function ClientProfile({ user }: ClientProfileProps) {
             defaultValue={formatPhoneNumber(user.phone)}
             value={phone}
             onChange={handlePhoneMask}
-            className="bg-background"
+            className="bg-content2"
             type="text"
             placeholder="Digite seu celular"
             label="DDD + Celular"
@@ -177,7 +177,7 @@ function ClientProfile({ user }: ClientProfileProps) {
           isInvalid={undefined}
           defaultValue={formatCpf(user.cpf)}
           isDisabled
-          className="bg-background sm:w-1/2 w-full"
+          className="bg-content2 sm:w-1/2 w-full"
           type="text"
           label="CPF"
           labelPlacement="outside"
@@ -195,7 +195,7 @@ function ClientProfile({ user }: ClientProfileProps) {
           <Input
             {...register("password")}
             isInvalid={errors.password ? true : undefined}
-            className="bg-background"
+            className="bg-content2"
             type="password"
             placeholder="Sua senha"
             label="Senha"
@@ -218,7 +218,7 @@ function ClientProfile({ user }: ClientProfileProps) {
           <Input
             {...register("c_password")}
             isInvalid={errors.c_password ? true : undefined}
-            className="bg-background"
+            className="bg-content2"
             type="password"
             placeholder="Confirme sua senha"
             label="Confirmar a senha"
@@ -268,7 +268,7 @@ function ClientProfile({ user }: ClientProfileProps) {
           type="submit"
           isLoading={isSubmitting}
           className="text-neutral-50 sm:w-64 w-full"
-          color="success"
+          color="primary"
           size="lg"
           radius="sm"
         >

@@ -23,7 +23,7 @@ interface ProductDetailsProps {
 }
 
 const Horizontal = () => {
-  return <span className="w-[30%] h-[1.5px] bg-content2 my-2" />;
+  return <span className="w-[30%] h-[1.5px] bg-content1 my-2" />;
 };
 
 function ProductDetails({ product }: ProductDetailsProps) {

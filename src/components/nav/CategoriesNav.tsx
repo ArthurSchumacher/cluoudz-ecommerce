@@ -10,23 +10,19 @@ interface CategoriesNavProps {
 
 function CategoriesNav({ categories }: CategoriesNavProps) {
   return (
-    <div className="w-full bg-primary-700 sm:block hidden">
+    <div className="w-full bg-primary text-content2 sm:block hidden">
       <Container>
         <div className="flex flex-row items-center justify-evenly">
           {categories &&
             categories.map((category) => {
               return (
-                <div
+                <Link
                   key={category.id}
-                  className="hover:bg-primary-800 hover:rounded-b-2xl p-4 cursor-pointer"
+                  href={paths.search(category.id)}
+                  className="text-content2 hover:text-content1 hover:bg-background hover:rounded-b-2xl p-4 cursor-pointer"
                 >
-                  <Link
-                    href={paths.search(category.id)}
-                    className="text-content1"
-                  >
-                    {category.name}
-                  </Link>
-                </div>
+                  {category.name}
+                </Link>
               );
             })}
         </div>

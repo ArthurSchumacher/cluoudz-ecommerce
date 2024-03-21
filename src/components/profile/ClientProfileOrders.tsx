@@ -17,7 +17,7 @@ function ClientProfileOrders({ orders }: ClientProfileOrdersProps) {
     <Accordion
       variant="splitted"
       itemClasses={{
-        base: "border border-content2 group-[.is-splitted]:bg-background",
+        base: "border border-content2 group-[.is-splitted]:bg-content2",
       }}
     >
       {orders.map((order) => {

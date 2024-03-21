@@ -12,7 +12,7 @@ function HomeBanner() {
           <p className="text-lg md:text-xl text-white mb-2">
             Aproveite o desconto em itens selecionados.
           </p>
-          <p className="text-2xl md:text-5xl text-yellow-400 font-bold antialiased">
+          <p className="text-2xl md:text-5xl text-red-700 font-bold antialiased">
             Até 50% OFF
           </p>
         </div>

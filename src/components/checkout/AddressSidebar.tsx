@@ -36,7 +36,7 @@ function AddressSidebar({ addresses, address, onSelect }: AddressSidebarProps) {
   return (
     <>
       <Link
-        className="sm:text-xl text-lg text-secondary cursor-pointer"
+        className="sm:text-xl text-lg text-primary cursor-pointer"
         onClick={handleOpenSidebar}
       >
         Alterar endereço

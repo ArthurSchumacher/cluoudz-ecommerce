@@ -65,7 +65,7 @@ function CheckoutForm({
       return;
     }
     handleSetPaymentSuccess(false);
-  }, [stripe]);
+  }, [stripe, clientSecret, handleSetPaymentSuccess]);
 
   const onSubmit: SubmitHandler<CheckoutFormFields> = async (data) => {
     try {
@@ -107,7 +107,7 @@ function CheckoutForm({
       className="grid grid-cols-3 gap-x-8 gap-y-4 sm:pb-16 pb-8"
     >
       <div className="sm:col-span-2 col-span-3">
-        <div className="border border-content4 rounded-md bg-background p-4 sm:mb-8 mb-4 shadow-md">
+        <div className="border border-content4 rounded-md bg-content2 p-4 sm:mb-8 mb-4 shadow-md">
           <div className="flex flex-row flex-nowrap gap-x-8">
             <PaymentElement
               className="w-full"
@@ -127,14 +127,14 @@ function CheckoutForm({
           </p>
           <p className="justify-self-end text-sm font-semibold">Total</p>
         </div>
-        <div className="border border-content4 rounded-md bg-background px-2 shadow-md">
+        <div className="border border-content4 rounded-md bg-content2 px-2 shadow-md">
           {products.map((product) => {
             return <CheckoutProduct key={product.id} product={product} />;
           })}
         </div>
       </div>
       <div className="sm:col-span-1 col-span-3 flex flex-col sm:gap-4 gap-2">
-        <div className="border border-content4 rounded-md bg-background p-4 shadow-md">
+        <div className="border border-content4 rounded-md bg-content2 p-4 shadow-md">
           <DeliveryAddress address={address} />
         </div>
         <div className="sm:p-4 p-1 flex items-center justify-center">
@@ -148,7 +148,7 @@ function CheckoutForm({
         </div>
         {clientSecret && !paymentSuccess && (
           <>
-            <div className="border border-content4 rounded-md bg-background p-4 shadow-md">
+            <div className="border border-content4 rounded-md bg-content2 p-4 shadow-md">
               <OrderDetails products={products} address={address} />
             </div>
 
@@ -168,7 +168,7 @@ function CheckoutForm({
 
         {paymentSuccess && (
           <>
-            <div className="border border-content4 rounded-md bg-background p-4 shadow-md">
+            <div className="border border-content4 rounded-md bg-content2 p-4 shadow-md">
               <PaymentSuccess />
             </div>
 

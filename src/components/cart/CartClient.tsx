@@ -62,7 +62,7 @@ function CartClient({ products, cart }: CartClientProps) {
           return <ItemContent key={item.id} item={item} />;
         })}
       </div>
-      <div className="border-t-[1.5px] border-content2 py-4 flex justify-between gap-8">
+      <div className="border-t-[1.5px] border-content1 py-4 flex justify-between gap-8">
         <form onSubmit={handleClear}>
           <Button
             type="submit"

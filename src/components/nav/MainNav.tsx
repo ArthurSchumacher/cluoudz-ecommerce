@@ -17,9 +17,9 @@ interface MainNavProps {
 
 function MainNav({ categories }: MainNavProps) {
   return (
-    <nav className="w-full sm:py-10 py-2 bg-primary-800 text-content1">
+    <nav className="w-full sm:py-10 py-2 bg-background text-content1">
       <Container>
-        <div className="flex flex-row items-center justify-between gap-x-8">
+        <div className="flex flex-row items-center justify-evenly gap-x-8">
           <div className="flex-shrink flex flex-row items-center justify-center gap-x-2">
             <NavbarMenuModal categories={categories} />
             <Logo />
@@ -38,7 +38,7 @@ function MainNav({ categories }: MainNavProps) {
               variant="flat"
               className="bg-transparent text-content1 flex lg:hidden"
             >
-              <FiUser size={20} className="text-content1" />
+              <FiUser size={30} className="text-content1" />
             </Button>
             <Button
               size="lg"
@@ -49,7 +49,7 @@ function MainNav({ categories }: MainNavProps) {
               className="bg-transparent text-content1"
             >
               <FaRegHeart size={40} className="sm:block hidden" />
-              <FaRegHeart size={20} className="sm:hidden block" />
+              <FaRegHeart size={30} className="sm:hidden block" />
             </Button>
             <ShoppingBag />
           </div>

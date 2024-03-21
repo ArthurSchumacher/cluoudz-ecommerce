@@ -8,7 +8,7 @@ import AuthHeader from "./AuthHeader";
 
 function Contact() {
   return (
-    <div className="w-full bg-primary-800 py-2 hidden lg:block">
+    <div className="w-full bg-background py-2 hidden lg:block">
       <Container>
         <div className="flex flex-row justify-between">
           <div className="flex flex-row gap-4">
@@ -16,14 +16,14 @@ function Contact() {
               href="#"
               className="inline-flex items-center justify-center gap-2 py-4"
             >
-              <FaPhoneAlt size={20} className="fill-secondary" />
+              <FaPhoneAlt size={20} className="fill-primary" />
               <p className="text-content1 antialiased">{`(67) 9 9999-9999`}</p>
             </Link>
             <Link
               href="#"
               className="inline-flex items-center justify-center gap-2 py-4"
             >
-              <IoLogoWhatsapp size={20} className="fill-secondary" />
+              <IoLogoWhatsapp size={20} className="fill-primary" />
               <p className="text-content1 antialiased">{`(67) 9 9999-9999`}</p>
             </Link>
           </div>

@@ -12,7 +12,7 @@ async function ShoppingBag() {
 
   return (
     <div className="relative">
-      <p className="absolute bottom-0 right-0 bg-secondary text-white rounded-full sm:w-6 sm:h-6 w-5 h-5 flex items-center justify-center z-10 sm:text-sm text-xs">
+      <p className="absolute bottom-0 right-0 bg-primary text-white rounded-full sm:w-6 sm:h-6 w-5 h-5 flex items-center justify-center z-10 sm:text-sm text-xs">
         {(cart && cart._count) || 0}
       </p>
       <Button
@@ -24,7 +24,7 @@ async function ShoppingBag() {
         className="bg-transparent text-content1"
       >
         <FaShoppingBag size={40} className="sm:block hidden" />
-        <FaShoppingBag size={20} className="sm:hidden block" />
+        <FaShoppingBag size={30} className="sm:hidden block" />
       </Button>
     </div>
   );
