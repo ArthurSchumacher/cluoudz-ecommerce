@@ -16,7 +16,7 @@ function SignInPage() {
         </h1>
         <div className="flex flex-col sm:flex-row gap-14">
           <div className="w-full sm:w-1/2">
-            <Card className="bg-background">
+            <Card className="bg-content2">
               <CardHeader className="sm:text-2xl text-lg font-extralight text-content1">
                 Acesse sua conta
               </CardHeader>

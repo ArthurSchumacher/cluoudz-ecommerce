@@ -120,7 +120,7 @@ function AddressForm({ address }: AddressFormProps) {
         isInvalid={errors.cep ? true : undefined}
         value={cep}
         onChange={handleCepMask}
-        className="bg-background"
+        className="bg-content2"
         placeholder="Digite seu CEP"
         label="CEP"
         labelPlacement="outside"
@@ -147,7 +147,7 @@ function AddressForm({ address }: AddressFormProps) {
             onChange={(e) => {
               setStreet(e.target.value);
             }}
-            className="bg-background"
+            className="bg-content2"
             type="text"
             placeholder="Digite sua rua"
             label="Rua"
@@ -172,7 +172,7 @@ function AddressForm({ address }: AddressFormProps) {
             {...register("number")}
             isInvalid={errors.number ? true : undefined}
             defaultValue={address ? address.number.toString() : ""}
-            className="bg-background"
+            className="bg-content2"
             type="text"
             placeholder="Digite o número"
             label="Número"
@@ -200,7 +200,7 @@ function AddressForm({ address }: AddressFormProps) {
         onChange={(e) => {
           setDistrict(e.target.value);
         }}
-        className="bg-background"
+        className="bg-content2"
         type="text"
         placeholder="Digite seu bairro"
         label="Bairro"
@@ -223,7 +223,7 @@ function AddressForm({ address }: AddressFormProps) {
         {...register("complement")}
         isInvalid={errors.complement ? true : undefined}
         defaultValue={address ? address.complement : ""}
-        className="bg-background"
+        className="bg-content2"
         type="text"
         placeholder="Digite o complemento"
         label="Complemento"
@@ -251,7 +251,7 @@ function AddressForm({ address }: AddressFormProps) {
             onChange={(e) => {
               setCity(e.target.value);
             }}
-            className="bg-background"
+            className="bg-content2"
             type="text"
             placeholder="Digite a cidade"
             label="Cidade"
@@ -279,7 +279,7 @@ function AddressForm({ address }: AddressFormProps) {
             onChange={(e) => {
               setUf(e.target.value);
             }}
-            className="bg-background"
+            className="bg-content2"
             type="text"
             placeholder="UF"
             label="Estado"
@@ -305,7 +305,7 @@ function AddressForm({ address }: AddressFormProps) {
           type="submit"
           isLoading={isSubmitting}
           className="text-neutral-50 sm:w-64 w-full"
-          color="success"
+          color="primary"
           size="lg"
           radius="sm"
         >

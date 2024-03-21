@@ -14,11 +14,12 @@ function SearchInput() {
         startContent={<FaSearch className="text-foreground" />}
         placeholder="Hoje você precisa de um(a)..."
         defaultValue={searchParams.get("product") || ""}
+        variant="bordered"
         name="product"
         size="sm"
         radius="sm"
         classNames={{
-          inputWrapper: ["shadow-md", "bg-white", "!cursor-text"],
+          inputWrapper: ["shadow-md", "bg-content2", "!cursor-text"],
           input: "text-foreground",
         }}
       />

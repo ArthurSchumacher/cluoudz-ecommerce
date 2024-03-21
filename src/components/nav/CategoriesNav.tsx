@@ -19,7 +19,7 @@ function CategoriesNav({ categories }: CategoriesNavProps) {
                 <Link
                   key={category.id}
                   href={paths.search(category.id)}
-                  className="text-content2 hover:text-content1 hover:bg-background hover:rounded-b-2xl p-4 cursor-pointer"
+                  className="text-content2 hover:text-content1 hover:bg-background p-4 cursor-pointer"
                 >
                   {category.name}
                 </Link>

@@ -58,8 +58,10 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
           <ul>
             {links.map((link, index) => {
               return (
-                <li key={index} className="text-content3 antialiased py-2">
-                  <Link href={link.path}>{link.name}</Link>
+                <li key={index} className="py-2">
+                  <Link className="text-content1 antialiased" href={link.path}>
+                    {link.name}
+                  </Link>
                 </li>
               );
             })}
