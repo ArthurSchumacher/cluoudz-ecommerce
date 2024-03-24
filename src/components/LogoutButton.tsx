@@ -24,7 +24,7 @@ function LogoutButton() {
   return (
     <Link
       onClick={logout}
-      className="text-primary antialiased border-b border-b-transparent hover:border-b-secondary"
+      className="text-primary antialiased border-b border-b-transparent hover:border-b-primary"
       href={""}
     >
       Sair.

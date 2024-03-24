@@ -9,9 +9,7 @@ import { Image } from "@nextui-org/react";
 import { truncateText } from "@/utils/truncateText";
 import * as actions from "@/actions";
 import toast from "react-hot-toast";
-import router from "next/router";
 import { useRouter } from "next/navigation";
-import { formatPrice } from "@/utils/formatPrice";
 import { IoMdTrash } from "react-icons/io";
 
 interface FavoriteItemContentProps {
@@ -65,12 +63,12 @@ function FavoriteItemContent({ product }: FavoriteItemContentProps) {
       </div>
       <div className="justify-self-center flex gap-4">
         <form onSubmit={handleAddItemToCart}>
-          <Button isIconOnly className="bg-content1" type="submit">
+          <Button isIconOnly className="bg-content2" type="submit">
             <MdAddShoppingCart size={20} />
           </Button>
         </form>
         <form onSubmit={handleDeleteItemFromFavorite}>
-          <Button isIconOnly className="bg-content1" type="submit">
+          <Button isIconOnly className="bg-content2" type="submit">
             <IoMdTrash size={20} />
           </Button>
         </form>

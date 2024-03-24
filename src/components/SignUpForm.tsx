@@ -2,6 +2,7 @@
 
 import * as actions from "@/actions";
 import { paths } from "@/paths";
+import { UserDto } from "@/types/user";
 import { normalizeCpf } from "@/utils/formatCpf";
 import { normalizePhoneNumber } from "@/utils/formatPhoneNumber";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -67,14 +68,18 @@ export default function SignUpForm() {
       }
 
       if (data.tos === true && data.password === data.c_password) {
-        const userDto = {
-          ...data,
-          c_password: undefined,
-          tos: undefined,
+        const userDto: UserDto = {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          cpf: data.cpf,
+          password: data.password,
         };
 
-        await actions.signUp(userDto);
-        router.replace(paths.signIn());
+        const user = await actions.signUp(userDto);
+        if (user.id) {
+          router.replace(paths.signIn());
+        }
       }
     } catch (error) {
       toast.error("Falha ao criar usúario!");

@@ -44,15 +44,30 @@ export const paths = {
     }`;
   },
   addresses() {
-    return `/perfil/enderecos`;
+    return `/enderecos`;
   },
   createAddress() {
-    return `/perfil/enderecos/novo`;
+    return `/enderecos/novo`;
   },
   updateAddress(addressId: string) {
-    return `/perfil/enderecos/${addressId}/editar`;
+    return `/enderecos/${addressId}/editar`;
   },
   orders() {
-    return `/perfil/pedidos`;
+    return `/pedidos`;
+  },
+  adminProducts() {
+    return `/produtos`;
+  },
+  adminOrders() {
+    return `/vendas`;
+  },
+  adminCategories() {
+    return `/categorias`;
+  },
+  adminCreateCategory() {
+    return `/categorias/novo`;
+  },
+  adminUsers() {
+    return `/clientes`;
   },
 };

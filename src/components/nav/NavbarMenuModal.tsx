@@ -45,7 +45,7 @@ function NavbarMenuModal({ categories }: NavbarMenuModalProps) {
         variant="flat"
         className="bg-transparent text-content1 sm:hidden block"
       >
-        {open ? <FaTimes size={20} /> : <FaBars size={20} />}
+        {open ? <FaTimes size={30} /> : <FaBars size={30} />}
       </Button>
       <div
         className={`fixed top-0 w-full h-dvh z-40 bg-foreground/25 transition-all duration-1000 ease-in ${

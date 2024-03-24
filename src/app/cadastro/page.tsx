@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/common/Breadcrumbs";
 import Container from "@/components/common/Container";
 import SignUpForm from "@/components/SignUpForm";
+import { paths } from "@/paths";
 import { Card, CardHeader, CardBody } from "@nextui-org/react";
 import React from "react";
 
@@ -8,7 +9,12 @@ function SignUpPage() {
   return (
     <section className="w-full text-content1 pb-16">
       <Container>
-        <Breadcrumb />
+        <Breadcrumb
+          links={[
+            { path: paths.home(), label: "Home" },
+            { path: paths.signUp(), label: "Cadastro" },
+          ]}
+        />
         <div className="flex flex-col sm:flex-row gap-14">
           <div className="w-full sm:w-1/2">
             <Card className="bg-content2">

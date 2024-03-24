@@ -10,7 +10,13 @@ function SignInPage() {
   return (
     <section className="w-full pb-16 text-content1">
       <Container>
-        <Breadcrumb />
+        <Breadcrumb
+          links={[
+            { path: paths.home(), label: "Home" },
+            { path: paths.signIn(), label: "Login" },
+            { path: paths.signUp(), label: "Cadastro" },
+          ]}
+        />
         <h1 className="sm:text-3xl text-xl font-light text-content3 pb-6">
           Acessar ou criar conta
         </h1>

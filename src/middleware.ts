@@ -1,9 +1,9 @@
-import { getURL } from "next/dist/shared/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 import { paths } from "./paths";
 import { getUrl } from "./utils/getUrl";
+import { getSession } from "next-auth/react";
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   const token = request.cookies.get("next-auth.session-token");
   const pathname = request.nextUrl.pathname;
 

@@ -1,46 +1,30 @@
 "use client";
 
-import { paths } from "@/paths";
 import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
 
-export default function Breadcrumb() {
+interface BreadcrumbProps {
+  links: { path: string; label: string }[];
+}
+
+export default function Breadcrumb({ links }: BreadcrumbProps) {
   const currentPath = usePathname();
+
   return (
     <Container>
       <div className="flex items-center sm:py-16 py-8">
         <Breadcrumbs>
-          {currentPath.includes(paths.home()) ? (
-            <BreadcrumbItem href={paths.home()}>
-              <p className="text-xl antialiased">Home</p>
-            </BreadcrumbItem>
-          ) : null}
-          {currentPath.includes("login") ? (
-            <BreadcrumbItem href={paths.signIn()}>
-              <p className="text-xl antialiased">Login</p>
-            </BreadcrumbItem>
-          ) : null}
-          {currentPath.includes("cadastro") ? (
-            <BreadcrumbItem href={paths.signUp()}>
-              <p className="text-xl antialiased">Cadastro</p>
-            </BreadcrumbItem>
-          ) : null}
-          {currentPath.includes("perfil") ? (
-            <BreadcrumbItem href={paths.profile()}>
-              <p className="text-xl antialiased">Perfil</p>
-            </BreadcrumbItem>
-          ) : null}
-          {currentPath.includes("endereco") ? (
-            <BreadcrumbItem href={paths.profile()}>
-              <p className="text-xl antialiased">Endereços</p>
-            </BreadcrumbItem>
-          ) : null}
-          {currentPath.includes("pedidos") ? (
-            <BreadcrumbItem href={paths.orders()}>
-              <p className="text-xl antialiased">Pedidos</p>
-            </BreadcrumbItem>
-          ) : null}
+          {links.map((link, index) => {
+            if (currentPath.includes(link.path)) {
+              return (
+                <BreadcrumbItem key={index} href={link.path}>
+                  <p className="text-xl antialiased">{link.label}</p>
+                </BreadcrumbItem>
+              );
+            }
+            return null;
+          })}
         </Breadcrumbs>
       </div>
     </Container>

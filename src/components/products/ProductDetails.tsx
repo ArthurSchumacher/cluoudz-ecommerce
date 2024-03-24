@@ -140,8 +140,8 @@ function ProductDetails({ product }: ProductDetailsProps) {
           handleQuantityIncrease={handleQtyIncrease}
         />
         <Horizontal />
-        <div className="flex gap-x-4">
-          <div className="max-w-[30%]">
+        <div className="flex items-center gap-x-4">
+          <div>
             <Button
               onClick={handleSubmit}
               size="lg"

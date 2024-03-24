@@ -19,7 +19,16 @@ function AuthHeader() {
   if (session.status === "authenticated") {
     authContent = (
       <>
-        <FiUser size={20} className="text-content1" />
+        {session.data.user.typeUser === 1 ? (
+          <Link
+            href={paths.adminCategories()}
+            className="text-content1 border-b border-b-transparent hover:border-b-content1"
+          >
+            <FiUser size={20} />
+          </Link>
+        ) : (
+          <FiUser size={20} className="text-content1" />
+        )}
         <p className="text-content1 antialiased uppercase font-bold">
           Bem vindo{" "}
           <Link

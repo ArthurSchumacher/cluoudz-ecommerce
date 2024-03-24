@@ -15,7 +15,7 @@ interface MainNavProps {
   categories: Category[];
 }
 
-function MainNav({ categories }: MainNavProps) {
+async function MainNav({ categories }: MainNavProps) {
   return (
     <nav className="w-full sm:py-10 py-2 bg-background text-content1">
       <Container>
