@@ -13,4 +13,5 @@ export type UserDto = {
   phone: string;
   cpf: string;
   password: string;
+  typeUser: number;
 };

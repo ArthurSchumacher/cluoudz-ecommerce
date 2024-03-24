@@ -74,6 +74,7 @@ export default function SignUpForm() {
           phone: data.phone,
           cpf: data.cpf,
           password: data.password,
+          typeUser: 0,
         };
 
         const user = await actions.signUp(userDto);
