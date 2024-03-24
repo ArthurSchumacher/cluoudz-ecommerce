@@ -10,12 +10,16 @@ import ShoppingBag from "./ShoppingBag";
 import { Suspense } from "react";
 import SearchInput from "./SearchInput";
 import Logo from "../common/Logo";
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "@/auth";
 
 interface MainNavProps {
   categories: Category[];
 }
 
 async function MainNav({ categories }: MainNavProps) {
+  const session = await getServerSession(nextAuthOptions);
+
   return (
     <nav className="w-full sm:py-10 py-2 bg-background text-content1">
       <Container>
@@ -33,7 +37,7 @@ async function MainNav({ categories }: MainNavProps) {
             <Button
               size="lg"
               as={Link}
-              href={paths.profile()}
+              href={!session ? paths.signIn() : paths.profile()}
               isIconOnly
               variant="flat"
               className="bg-transparent text-content1 flex lg:hidden"
