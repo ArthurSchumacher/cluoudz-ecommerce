@@ -11,6 +11,8 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(getUrl(paths.home())));
   }
 
+  console.log(token);
+
   if (pathname.includes("/perfil") && !token) {
     return NextResponse.redirect(new URL(getUrl(paths.home())));
   }
