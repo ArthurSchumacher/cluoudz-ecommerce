@@ -6,9 +6,7 @@ import * as queries from "@/queries";
 import Empty from "@/components/profile/EmptyOrders";
 
 async function OrdersPage() {
-  const orders = await queries.userOrders().then((res) => {
-    return res.reverse();
-  });
+  const orders = await queries.userOrders();
 
   if (!orders || orders.message) {
     return (
@@ -29,6 +27,8 @@ async function OrdersPage() {
       orderProduct.product.image = singleProduct.image;
     }
   }
+
+  orders.reverse();
 
   return (
     <section>
