@@ -4,14 +4,12 @@ import { getUrl } from "./utils/getUrl";
 import { getSession } from "next-auth/react";
 
 export default async function middleware(request: NextRequest) {
-  const token = request.cookies.get("next-auth.session-token");
+  const token = request.cookies.get("__Secure-next-auth.session-token");
   const pathname = request.nextUrl.pathname;
 
   if ((pathname === "/login" || pathname === "/cadastro") && token) {
     return NextResponse.redirect(new URL(getUrl(paths.home())));
   }
-
-  console.log(token);
 
   if (pathname.includes("/perfil") && !token) {
     return NextResponse.redirect(new URL(getUrl(paths.home())));
