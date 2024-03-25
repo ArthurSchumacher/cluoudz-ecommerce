@@ -3,3 +3,7 @@ export type Category = {
   name: string;
   created_at: Date;
 };
+
+export type CategoryDto = {
+  name: string;
+};

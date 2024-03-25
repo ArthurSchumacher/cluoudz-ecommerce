@@ -20,3 +20,7 @@ export { placeOrder } from "./order/place-order";
 export { createPaymentIntent } from "./order/create-payment-intent";
 
 export { search } from "./search/search";
+
+export { createCategory } from "./category/create-category";
+export { updateCategory } from "./category/update-category";
+export { deleteCategory } from "./category/delete-category";

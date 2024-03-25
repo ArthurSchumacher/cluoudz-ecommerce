@@ -31,7 +31,6 @@ export default async function AdminRoutesLayout({
             { path: paths.adminCategories(), label: "Categorias" },
             { path: paths.adminProducts(), label: "Produtos" },
             { path: paths.adminOrders(), label: "Vendas" },
-            { path: paths.adminUsers(), label: "Clientes" },
           ]}
         />
         <Nav
@@ -39,7 +38,6 @@ export default async function AdminRoutesLayout({
             { path: paths.adminCategories(), label: "Categorias" },
             { path: paths.adminProducts(), label: "Produtos" },
             { path: paths.adminOrders(), label: "Vendas" },
-            { path: paths.adminUsers(), label: "Clientes" },
           ]}
         />
         {children}

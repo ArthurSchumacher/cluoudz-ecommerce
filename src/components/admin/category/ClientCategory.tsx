@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../Title";
+import Title from "../../Title";
 import { Card, CardBody, Link } from "@nextui-org/react";
 import { paths } from "@/paths";
 import { FaPlus } from "react-icons/fa";
@@ -26,7 +26,7 @@ function ClientCategory({ categories }: ClientCategoryProps) {
           Nova Categoria
         </CardBody>
       </Card>
-      <CategoriesTable categories={categories} />
+      <CategoriesTable rows={categories} />
     </div>
   );
 }

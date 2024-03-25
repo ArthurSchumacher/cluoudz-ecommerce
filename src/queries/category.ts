@@ -19,3 +19,20 @@ export async function allCategories(): Promise<Category[]> {
 
   return res;
 }
+
+export async function singleCategory(categoryId: string): Promise<Category> {
+  const res = await axios
+    .get(`${process.env.API_URL}/category/${categoryId}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return res;
+}

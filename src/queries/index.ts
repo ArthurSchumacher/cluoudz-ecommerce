@@ -1,4 +1,5 @@
 export { allCategories } from "./category";
+export { singleCategory } from "./category";
 
 export { allProducts } from "./product";
 export { singleProduct } from "./product";

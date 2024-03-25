@@ -1,4 +1,4 @@
-import ClientCategory from "@/components/admin/ClientCategory";
+import ClientCategory from "@/components/admin/category/ClientCategory";
 import SmallContainer from "@/components/common/FormContainer";
 import React from "react";
 import * as queries from "@/queries";

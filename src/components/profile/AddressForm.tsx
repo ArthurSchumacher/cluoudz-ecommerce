@@ -70,7 +70,6 @@ function AddressForm({ address }: AddressFormProps) {
       };
 
       if (!address) {
-        console.log(data);
         await actions.createAddress(addressDto);
       }
 

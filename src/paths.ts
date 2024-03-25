@@ -67,6 +67,9 @@ export const paths = {
   adminCreateCategory() {
     return `/categorias/novo`;
   },
+  adminUpdateCategory(categoryId: string) {
+    return `/categorias/${categoryId}/editar`;
+  },
   adminUsers() {
     return `/clientes`;
   },
