@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { paths } from "./paths";
 import { getUrl } from "./utils/getUrl";
-import { getSession } from "next-auth/react";
 
 export default async function middleware(request: NextRequest) {
   const token = request.cookies.get("__Secure-next-auth.session-token");
