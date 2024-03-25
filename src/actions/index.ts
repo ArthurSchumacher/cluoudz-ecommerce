@@ -24,3 +24,7 @@ export { search } from "./search/search";
 export { createCategory } from "./category/create-category";
 export { updateCategory } from "./category/update-category";
 export { deleteCategory } from "./category/delete-category";
+
+export { createProduct } from "./product/create-product";
+export { updateProduct } from "./product/update-product";
+export { deleteProduct } from "./product/delete-product";

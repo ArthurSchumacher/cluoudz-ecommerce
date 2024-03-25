@@ -13,12 +13,13 @@ interface UpdateProductAdminPageProps {
 
 async function UpdateProductAdminPage({ params }: UpdateProductAdminPageProps) {
   const product = await queries.singleProduct(params.id);
+  const categories = await queries.allCategories();
 
   return (
     <section>
       <SmallContainer>
         <Title isUpperCase label="Editar" />
-        <ProductForm product={product} />
+        <ProductForm product={product} categories={categories} />
       </SmallContainer>
     </section>
   );

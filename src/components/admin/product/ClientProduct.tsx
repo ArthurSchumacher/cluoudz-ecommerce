@@ -19,7 +19,7 @@ function ClientProduct({ products }: ClientProductProps) {
         radius="sm"
         className="py-4 w-full h-full border-1 border-content2 bg-content2 text-content1 shadow-md"
         as={Link}
-        href={paths.adminCreateCategory()}
+        href={paths.adminCreateProduct()}
       >
         <CardBody className="flex-col items-center justify-center">
           <FaPlus size={20} />

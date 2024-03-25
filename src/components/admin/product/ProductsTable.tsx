@@ -58,14 +58,14 @@ export default function CategoryTable({ rows }: CategoryTableProps) {
   const deleteCategory = async () => {
     try {
       if (!selectedProduct) {
-        throw new Error("Categoria vazia.");
+        throw new Error("Produto vazia.");
       }
 
-      await actions.deleteCategory(selectedProduct.id.toString());
+      await actions.deleteProduct(selectedProduct.id.toString());
       onClose();
       router.refresh();
     } catch (error) {
-      throw new Error("Erro ao deletar endereço");
+      throw new Error("Erro ao deletar produto");
     }
   };
 
@@ -105,7 +105,7 @@ export default function CategoryTable({ rows }: CategoryTableProps) {
               >
                 <Link
                   className="text-lg text-warning cursor-pointer active:opacity-50"
-                  href={paths.adminUpdateCategory(product.id.toString())}
+                  href={paths.adminUpdateProduct(product.id.toString())}
                 >
                   <FaEdit size={25} />
                 </Link>
