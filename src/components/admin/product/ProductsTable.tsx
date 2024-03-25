@@ -169,7 +169,7 @@ export default function CategoryTable({ rows }: CategoryTableProps) {
             </TableColumn>
           )}
         </TableHeader>
-        <TableBody items={items} emptyContent={"Sem categorias para mostrar."}>
+        <TableBody items={items} emptyContent={"Sem produtos para mostrar."}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
