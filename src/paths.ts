@@ -70,7 +70,4 @@ export const paths = {
   adminUpdateCategory(categoryId: string) {
     return `/categorias/${categoryId}/editar`;
   },
-  adminUsers() {
-    return `/clientes`;
-  },
 };
