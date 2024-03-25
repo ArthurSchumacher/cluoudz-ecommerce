@@ -25,3 +25,13 @@ export type SingleProduct = {
   };
   amount?: number;
 };
+
+export type ProductDto = {
+  name: string;
+  price: string;
+  description: string;
+  stock: string;
+  sale: string;
+  discount: string;
+  categoryId: string;
+};

@@ -12,7 +12,7 @@ interface ClientCategoryProps {
 
 function ClientCategory({ categories }: ClientCategoryProps) {
   return (
-    <div>
+    <>
       <Title label="Categorias" isUpperCase />
       <Card
         isPressable
@@ -27,7 +27,7 @@ function ClientCategory({ categories }: ClientCategoryProps) {
         </CardBody>
       </Card>
       <CategoriesTable rows={categories} />
-    </div>
+    </>
   );
 }
 

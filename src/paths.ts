@@ -58,6 +58,12 @@ export const paths = {
   adminProducts() {
     return `/produtos`;
   },
+  adminCreateProduct() {
+    return `/produtos/novo`;
+  },
+  adminUpdateProduct(productId: string) {
+    return `/produtos/${productId}/editar`;
+  },
   adminOrders() {
     return `/vendas`;
   },
@@ -69,8 +75,5 @@ export const paths = {
   },
   adminUpdateCategory(categoryId: string) {
     return `/categorias/${categoryId}/editar`;
-  },
-  adminUsers() {
-    return `/clientes`;
   },
 };
