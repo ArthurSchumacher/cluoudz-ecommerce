@@ -3,7 +3,7 @@ import { paths } from "./paths";
 import { getUrl } from "./utils/getUrl";
 
 export default async function middleware(request: NextRequest) {
-  const token = request.cookies.get("__Secure-next-auth.session-token");
+  const token = request.cookies.get("next-auth.session-token");
   const pathname = request.nextUrl.pathname;
 
   if ((pathname === "/login" || pathname === "/cadastro") && token) {
