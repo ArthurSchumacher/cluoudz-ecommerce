@@ -1,13 +1,13 @@
 import Title from "@/components/Title";
 import { paths } from "@/paths";
-import { Product } from "@/types/product";
+import { AllProducts, Product } from "@/types/product";
 import { Card, CardBody, Link } from "@nextui-org/react";
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 import ProductsTable from "./ProductsTable";
 
 interface ClientProductProps {
-  products: Product[];
+  products: AllProducts;
 }
 
 function ClientProduct({ products }: ClientProductProps) {

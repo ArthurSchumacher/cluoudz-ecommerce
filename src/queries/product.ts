@@ -1,20 +1,20 @@
 "use server";
 
-import { Product, SingleProduct } from "@/types/product";
+import { AllProducts, Product, SingleProduct } from "@/types/product";
 import axios from "axios";
 
 export async function allProducts(
-  category: string = "",
-  product: string = "",
-  skip: string = "",
+  category: string | undefined = "",
+  product: string | undefined = "",
+  size: string = "",
   page: string = ""
-): Promise<Product[]> {
+): Promise<AllProducts> {
   try {
     const res = await axios.get(`${process.env.API_URL}/product`, {
       params: {
         search: product,
         category: category,
-        size: skip,
+        size: size,
         page: page,
       },
       headers: {
@@ -24,7 +24,10 @@ export async function allProducts(
     return res.data;
   } catch (error) {
     console.error("Error fetching products:", error);
-    return [];
+    return {
+      products: [],
+      totalPages: 0,
+    };
   }
 }
 

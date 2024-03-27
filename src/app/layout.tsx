@@ -15,7 +15,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "E-Commerce",
-  description: "Sex shop e-commerce",
+  description: "Pantanal Headshop, sua loja de tabacaria.",
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import * as queries from "@/queries";
 import ClientProduct from "@/components/admin/product/ClientProduct";
 
 async function ProductAdminPage() {
-  const products = await queries.allProducts(undefined, undefined, "0", "100");
+  const products = await queries.allProducts(undefined, undefined, "100", "1");
 
   return (
     <section>
