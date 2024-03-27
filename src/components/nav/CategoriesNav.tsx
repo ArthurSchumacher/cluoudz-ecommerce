@@ -1,14 +1,17 @@
+"use client";
 import { Category } from "@/types/category";
 import React from "react";
 import Container from "../common/Container";
 import Link from "next/link";
 import { paths } from "@/paths";
+import { useRouter } from "next/navigation";
 
 interface CategoriesNavProps {
   categories: Category[];
 }
 
 function CategoriesNav({ categories }: CategoriesNavProps) {
+  const router = useRouter();
   return (
     <div className="w-full bg-primary text-content2 sm:block hidden">
       <Container>

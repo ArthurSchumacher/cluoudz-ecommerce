@@ -55,7 +55,6 @@ function ClientPagination({
         total={totalPages}
         color="primary"
         page={currentPage}
-        isCompact
         isDisabled
         classNames={{
           item: ["bg-content2", "text-content1"],

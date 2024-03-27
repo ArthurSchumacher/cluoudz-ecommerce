@@ -41,7 +41,7 @@ export const paths = {
   search(categoryId?: string, productName?: string) {
     return `/?${categoryId ? `category=${categoryId}` : ""}${
       productName ? `&product=${productName}` : ""
-    }`;
+    }&size=8&page=1`;
   },
   addresses() {
     return `/enderecos`;
