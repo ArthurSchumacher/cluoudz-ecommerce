@@ -1,6 +1,6 @@
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
-import { FaBars, FaRegHeart, FaSearch, FaShoppingBag } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import Container from "../common/Container";
 import NavbarMenuModal from "./NavbarMenuModal";
@@ -8,16 +8,18 @@ import { Category } from "@/types/category";
 import { paths } from "@/paths";
 import ShoppingBag from "./ShoppingBag";
 import { Suspense } from "react";
-import SearchInput from "./SearchInput";
 import Logo from "../common/Logo";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/auth";
+import SearchInput from "./SearchInput";
+import { useSearchParams } from "next/navigation";
 
 interface MainNavProps {
   categories: Category[];
+  category?: string;
 }
 
-async function MainNav({ categories }: MainNavProps) {
+async function MainNav({ categories, category }: MainNavProps) {
   const session = await getServerSession(nextAuthOptions);
 
   return (

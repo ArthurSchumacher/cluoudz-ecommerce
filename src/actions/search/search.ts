@@ -1,14 +1,24 @@
 "use server";
 
 import { paths } from "@/paths";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
-export async function search(formData: FormData) {
-  const product = formData.get("product");
+export type SearchDto = {
+  product: string;
+  category?: string | null;
+};
+
+export async function search(searchDto: SearchDto) {
+  const product = searchDto.product;
+  let category = searchDto.category;
 
   if (typeof product !== "string" || !product) {
     redirect("/");
   }
 
-  redirect(paths.search(undefined, product));
+  if (!category) {
+    category = undefined;
+  }
+
+  redirect(paths.search(category, product));
 }
