@@ -9,9 +9,9 @@ function Logo() {
       className="sm:text-5xl text-2xl font-bold text-content1 antialiased"
     >
       <Image
-        src="/image.png"
+        src="/logo-header.png"
         alt={"Logo pantanal headshop"}
-        className="sm:h-36 h-28"
+        className="sm:h-32 h-24"
       />
     </Link>
   );

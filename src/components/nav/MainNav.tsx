@@ -23,7 +23,7 @@ async function MainNav({ categories, category }: MainNavProps) {
   const session = await getServerSession(nextAuthOptions);
 
   return (
-    <nav className="w-full sm:py-10 py-2 bg-background text-content1">
+    <nav className="w-full sm:py-7 py-2 bg-background text-content1">
       <Container>
         <div className="flex flex-row items-center justify-evenly gap-x-8">
           <div className="flex-shrink flex flex-row items-center justify-center gap-x-2">

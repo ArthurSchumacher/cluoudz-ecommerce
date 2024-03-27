@@ -19,17 +19,22 @@ function ClientPagination({
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Atualiza a URL quando a página muda
     router.push(
       `${pathname}?category=${category}&product=${product}&size=${8}&page=${currentPage}`
     );
-  }, [currentPage, pathname, router, category, product]);
+  }, [pathname, category, product, currentPage, router]);
 
   const handleNextPage = () => {
+    router.push(
+      `${pathname}?category=${category}&product=${product}&size=${8}&page=${currentPage}`
+    );
     setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
   };
 
   const handlePrevPage = () => {
+    router.push(
+      `${pathname}?category=${category}&product=${product}&size=${8}&page=${currentPage}`
+    );
     setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
