@@ -39,7 +39,7 @@ export const paths = {
     return "";
   },
   search(categoryId?: string, productName?: string) {
-    return `/procurar?${categoryId ? `category=${categoryId}` : ""}${
+    return `/?${categoryId ? `category=${categoryId}` : ""}${
       productName ? `&product=${productName}` : ""
     }`;
   },

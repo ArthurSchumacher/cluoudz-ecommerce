@@ -17,7 +17,6 @@ async function Footer() {
   const links = [
     { name: "Sobre nós", path: paths.about() },
     { name: "Contato", path: paths.contact() },
-    { name: "Politica de entrega", path: paths.polices() },
     { name: "FAQs", path: paths.faq() },
   ];
 

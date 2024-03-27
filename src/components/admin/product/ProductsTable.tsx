@@ -24,7 +24,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import * as actions from "@/actions";
 import { paths } from "@/paths";
-import { Product } from "@/types/product";
+import { AllProducts, Product } from "@/types/product";
 import { formatPrice } from "@/utils/formatPrice";
 
 const columns = [
@@ -36,7 +36,7 @@ const columns = [
 ];
 
 interface CategoryTableProps {
-  rows: Product[];
+  rows: AllProducts;
 }
 
 export default function CategoryTable({ rows }: CategoryTableProps) {
@@ -46,13 +46,13 @@ export default function CategoryTable({ rows }: CategoryTableProps) {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 8;
 
-  const pages = Math.ceil(rows.length / rowsPerPage);
+  const pages = Math.ceil(rows.products.length / rowsPerPage);
 
   const items = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
-    return rows.slice(start, end);
+    return rows.products.slice(start, end);
   }, [page, rows, rowsPerPage]);
 
   const deleteCategory = async () => {

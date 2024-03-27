@@ -35,3 +35,8 @@ export type ProductDto = {
   discount: string;
   categoryId: string;
 };
+
+export type AllProducts = {
+  products: Product[];
+  totalPages: number;
+};
