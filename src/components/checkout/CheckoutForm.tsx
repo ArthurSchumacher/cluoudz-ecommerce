@@ -95,7 +95,8 @@ function CheckoutForm({
           }
         });
 
-      await actions.placeOrder(orderDto);
+      const req = await actions.placeOrder(orderDto);
+      console.log(req);
     } catch (error) {
       toast.error("Falha ao realizar checkout.");
     }
