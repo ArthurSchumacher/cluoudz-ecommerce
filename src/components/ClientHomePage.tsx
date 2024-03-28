@@ -8,6 +8,7 @@ import ProductsList from "@/components/products/ProductsList";
 import * as queries from "@/queries";
 import { usePathname, useRouter } from "next/navigation";
 import { AllProducts } from "@/types/product";
+import { Category } from "@/types/category";
 
 interface ClientHomePageProps {
   searchParams: {
@@ -16,9 +17,15 @@ interface ClientHomePageProps {
     skip?: string;
     page?: string;
   };
+  fetchedProducts: AllProducts;
+  category?: Category;
 }
 
-export default function ClientHomePage({ searchParams }: ClientHomePageProps) {
+export default function ClientHomePage({
+  searchParams,
+  fetchedProducts,
+  category,
+}: ClientHomePageProps) {
   const [products, setProducts] = useState<AllProducts>({
     products: [],
     totalPages: 0,
@@ -29,33 +36,12 @@ export default function ClientHomePage({ searchParams }: ClientHomePageProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const fetchedProducts = await queries.allProducts(
-          searchParams.category || "",
-          searchParams.product || "",
-          searchParams.skip || "8",
-          searchParams.page || "1"
-        );
-        setProducts(fetchedProducts);
-
-        if (searchParams.category) {
-          const category = await queries.singleCategory(searchParams.category);
-          setTitle(category.name);
-        }
-
-        router.push(
-          `${pathname}?category=${searchParams.category || ""}&product=${
-            searchParams.product || ""
-          }&size=8&page=${searchParams.page || 1}`
-        );
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
+    setProducts(fetchedProducts);
+    setCurrentPage(Number(searchParams.page) || 1);
+    if (category) {
+      setTitle(category.name);
     }
-
-    fetchProducts();
-  }, []);
+  });
 
   const handleNextPage = () => {
     if (currentPage < products.totalPages) {
@@ -64,7 +50,7 @@ export default function ClientHomePage({ searchParams }: ClientHomePageProps) {
           searchParams.product || ""
         }&size=8&page=${currentPage + 1}`
       );
-      setCurrentPage(Number(searchParams.page));
+      setCurrentPage((prevPage) => prevPage + 1); // Modificação aqui
       router.refresh();
     }
   };
@@ -76,7 +62,7 @@ export default function ClientHomePage({ searchParams }: ClientHomePageProps) {
           searchParams.product || ""
         }&size=8&page=${currentPage - 1}`
       );
-      setCurrentPage(Number(searchParams.page) - 1);
+      setCurrentPage((prevPage) => prevPage - 1); // Modificação aqui
       router.refresh();
     }
   };

@@ -1,10 +1,5 @@
 import ClientHomePage from "@/components/ClientHomePage";
-import HomeBanner from "@/components/HomeBanner";
-import ClientPagination from "@/components/common/ClientPagination";
-import Container from "@/components/common/Container";
-import ProductsList from "@/components/products/ProductsList";
 import * as queries from "@/queries";
-import { Pagination } from "@nextui-org/react";
 
 interface HomePageProps {
   searchParams: {
@@ -16,9 +11,33 @@ interface HomePageProps {
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
+  const fetchedProducts = await queries.allProducts(
+    searchParams.category || "",
+    searchParams.product || "",
+    searchParams.skip || "8",
+    searchParams.page || "1"
+  );
+
+  if (searchParams.category) {
+    const category = await queries.singleCategory(searchParams.category);
+
+    return (
+      <main className="w-full pb-16 bg-background">
+        <ClientHomePage
+          searchParams={searchParams}
+          fetchedProducts={fetchedProducts}
+          category={category}
+        />
+      </main>
+    );
+  }
+
   return (
     <main className="w-full pb-16 bg-background">
-      <ClientHomePage searchParams={searchParams} />
+      <ClientHomePage
+        searchParams={searchParams}
+        fetchedProducts={fetchedProducts}
+      />
     </main>
   );
 }
