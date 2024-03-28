@@ -8,8 +8,6 @@ import Empty from "@/components/profile/EmptyOrders";
 async function OrdersPage() {
   const orders = await queries.userOrders();
 
-  console.log(orders);
-
   if (!orders || orders.message) {
     return (
       <section>

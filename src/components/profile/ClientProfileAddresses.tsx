@@ -28,28 +28,7 @@ interface ClientProfileAddressesProps {
 }
 
 function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
   const router = useRouter();
-
-  const handleOpen = (address: Address) => {
-    setSelectedAddress(address);
-    onOpen();
-  };
-
-  const deleteAddress = async () => {
-    try {
-      if (!selectedAddress) {
-        throw new Error("Endereço vazio.");
-      }
-
-      await actions.deleteAddress(selectedAddress.id);
-      onClose();
-      router.refresh();
-    } catch (error) {
-      throw new Error("Erro ao deletar endereço");
-    }
-  };
 
   return (
     <>
@@ -97,41 +76,6 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
           </CardFooter>
         </Card>
       ))}
-
-      <Modal size="lg" isOpen={isOpen} onClose={onClose}>
-        <ModalContent className="bg-content2">
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                Deletar item
-              </ModalHeader>
-              <ModalBody>
-                {selectedAddress && (
-                  <>
-                    <p>
-                      {selectedAddress.street}, {selectedAddress.number} -{" "}
-                      {selectedAddress.district}
-                    </p>
-                    <p>{selectedAddress.complement}</p>
-                    <p>
-                      {selectedAddress.city}, {selectedAddress.uf.toUpperCase()}{" "}
-                      - {formatCep(selectedAddress.cep.toString())}
-                    </p>
-                  </>
-                )}
-              </ModalBody>
-              <ModalFooter>
-                <Button color="warning" variant="ghost" onPress={onClose}>
-                  Cancelar
-                </Button>
-                <Button color="danger" onPress={deleteAddress}>
-                  Deletar
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
     </>
   );
 }
