@@ -49,7 +49,7 @@ function OrderDetails({ products, address }: OrderDetailsProps) {
         <p className="sm:text-base text-sm py-2">
           Entrega para{" "}
           <strong className="font-semibold">
-            ({formatCep(address.cep.toString())})
+            {address && formatCep(address.cep.toString())}
           </strong>
           :
         </p>
