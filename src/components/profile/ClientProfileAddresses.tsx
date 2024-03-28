@@ -81,12 +81,6 @@ function ClientProfileAddresses({ addresses }: ClientProfileAddressesProps) {
               >
                 <FaEdit size={25} />
               </Link>
-              <Link
-                className="text-danger cursor-pointer"
-                onPress={() => handleOpen(address)}
-              >
-                <FaDeleteLeft size={25} />
-              </Link>
             </div>
           </CardHeader>
           <CardFooter className="flex-col items-start">
