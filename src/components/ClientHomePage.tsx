@@ -55,7 +55,7 @@ export default function ClientHomePage({ searchParams }: ClientHomePageProps) {
     }
 
     fetchProducts();
-  }, [searchParams, currentPage, pathname, router]);
+  }, []);
 
   const handleNextPage = () => {
     if (currentPage < products.totalPages) {
