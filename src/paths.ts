@@ -1,4 +1,7 @@
 export const paths = {
+  instagram() {
+    return ``;
+  },
   home() {
     return "/";
   },
@@ -66,6 +69,9 @@ export const paths = {
   },
   adminOrders() {
     return `/vendas`;
+  },
+  adminUpdateOrder(id: string) {
+    return `/vendas/${id}/editar`;
   },
   adminCategories() {
     return `/categorias`;

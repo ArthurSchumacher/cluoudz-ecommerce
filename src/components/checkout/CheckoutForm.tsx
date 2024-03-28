@@ -176,7 +176,7 @@ function CheckoutForm({
               size="lg"
               radius="sm"
               className="w-full text-background"
-              color="success"
+              color="primary"
               variant="solid"
               as={Link}
               href={paths.orders()}

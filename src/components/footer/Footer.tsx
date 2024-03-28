@@ -76,18 +76,18 @@ async function Footer() {
               Siga-nos
             </h3>
             <div className="flex gap-2">
-              <Link href="#" className="text-content2">
+              {/* <Link href="#" className="text-content2">
                 <MdFacebook size={24} />
-              </Link>
-              <Link href="#" className="text-content2">
+              </Link> */}
+              {/* <Link href="#" className="text-content2">
                 <AiFillTwitterCircle size={24} />
-              </Link>
-              <Link href="#" className="text-content2">
+              </Link> */}
+              <Link href={paths.instagram()} className="text-content2">
                 <AiFillInstagram size={24} />
               </Link>
-              <Link href="#" className="text-content2">
+              {/* <Link href="#" className="text-content2">
                 <AiFillYoutube size={24} />
-              </Link>
+              </Link> */}
             </div>
           </FooterList>
         </div>
