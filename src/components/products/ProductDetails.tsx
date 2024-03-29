@@ -2,19 +2,17 @@
 
 import { SingleProduct } from "@/types/product";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { Button, Link } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import ProductImage from "./ProductImage";
 import * as actions from "@/actions";
 import { ProductToCartDto } from "@/types/cart";
 import SetQuantity from "./SetQuantity";
 import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
-import { MdCheckCircle } from "react-icons/md";
 import { paths } from "@/paths";
 import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { formatPrice } from "@/utils/formatPrice";
-import { revalidateTag } from "next/cache";
 import { FaRegHeart } from "react-icons/fa";
 import { ProductToFavoriteDto } from "@/types/favorite";
 

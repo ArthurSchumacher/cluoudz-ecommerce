@@ -4,3 +4,7 @@ export type Status = {
   created_at: string;
   updated_at: string;
 };
+
+export type StatusDto = {
+  statusId: string;
+};
