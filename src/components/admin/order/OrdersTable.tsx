@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import {
   Table,
   TableHeader,
@@ -10,19 +10,10 @@ import {
   TableCell,
   Tooltip,
   Link,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
   Pagination,
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { FaEdit } from "react-icons/fa";
-import { FaDeleteLeft } from "react-icons/fa6";
-import * as actions from "@/actions";
 import { Order } from "@/types/order";
 import { paths } from "@/paths";
 import { formatOrderId } from "@/utils/formatOrderId";
@@ -101,12 +92,11 @@ export default function OrderTable({ rows }: OrderTableProps) {
           </div>
         );
       default:
-        // Ensure cellValue is a valid ReactNode
         return typeof cellValue === "string" || typeof cellValue === "number"
           ? cellValue
           : cellValue instanceof Date
           ? cellValue.toLocaleString()
-          : null; // or any other fallback value if needed
+          : null;
     }
   }, []);
 
