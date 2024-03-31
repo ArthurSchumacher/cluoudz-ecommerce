@@ -44,7 +44,7 @@ function ClientCheckout({ products, addresses }: CheckoutClientProps) {
     !shopPaymentIntent
       ? createAndUpdatePaymentIntent(null)
       : createAndUpdatePaymentIntent(JSON.parse(shopPaymentIntent));
-  }, []);
+  }, [handleSetPaymentIntent]);
 
   const options: StripeElementsOptions = {
     clientSecret,
