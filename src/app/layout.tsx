@@ -14,7 +14,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "E-Commerce",
+  title: "Pantanal Headshop",
   description: "Pantanal Headshop, sua tabacaria online.",
 };
 
