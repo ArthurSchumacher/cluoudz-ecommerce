@@ -1,7 +1,7 @@
 import ClientProfileAddresses from "@/components/profile/ClientProfileAddresses";
 import React from "react";
 import * as queries from "@/queries";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import Title from "@/components/Title";
 
 async function AddressesPage() {

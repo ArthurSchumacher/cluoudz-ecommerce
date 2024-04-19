@@ -1,5 +1,5 @@
 import Title from "@/components/Title";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import AddressForm from "@/components/profile/AddressForm";
 import React from "react";
 

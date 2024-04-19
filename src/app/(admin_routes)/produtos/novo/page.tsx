@@ -1,6 +1,6 @@
 import Title from "@/components/Title";
 import ProductForm from "@/components/admin/product/ProductForm";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import React from "react";
 import * as queries from "@/queries";
 

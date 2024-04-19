@@ -1,13 +1,13 @@
 import ClientAbout from "@/components/about/ClientAbout";
-import Container from "@/components/common/Container";
+import SmallContainer from "@/components/common/SmallContainer";
 import React from "react";
 
 function AboutPage() {
   return (
     <section>
-      <Container>
+      <SmallContainer>
         <ClientAbout />
-      </Container>
+      </SmallContainer>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import Title from "@/components/Title";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import ClientProfileOrders from "@/components/profile/ClientProfileOrders";
 import React from "react";
 import * as queries from "@/queries";

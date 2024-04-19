@@ -1,5 +1,5 @@
 import ClientCategory from "@/components/admin/category/ClientCategory";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import React from "react";
 import * as queries from "@/queries";
 

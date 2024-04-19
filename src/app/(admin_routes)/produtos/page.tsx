@@ -1,4 +1,4 @@
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import React from "react";
 import * as queries from "@/queries";
 import ClientProduct from "@/components/admin/product/ClientProduct";

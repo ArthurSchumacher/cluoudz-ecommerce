@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import SmallContainer from "../common/FormContainer";
+import SmallContainer from "../common/SmallContainer";
 import {
   Button,
   Card,

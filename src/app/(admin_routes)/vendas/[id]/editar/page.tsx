@@ -1,5 +1,5 @@
 import Title from "@/components/Title";
-import SmallContainer from "@/components/common/FormContainer";
+import SmallContainer from "@/components/common/SmallContainer";
 import React from "react";
 import * as queries from "@/queries";
 import ClientAdminSingleOrder from "@/components/admin/order/ClientAdminSingleOrder";

@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
 
-interface FormContainerProps {
+interface SmallContainerProps {
   children: ReactNode;
 }
 
-function SmallContainer({ children }: FormContainerProps) {
+function SmallContainer({ children }: SmallContainerProps) {
   return (
     <div className="w-full mx-auto max-w-screen-md sm:pb-16 pb-8">
       {children}
