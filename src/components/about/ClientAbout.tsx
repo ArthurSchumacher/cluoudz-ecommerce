@@ -1,6 +1,5 @@
 import React from "react";
 import Title from "../Title";
-import SmallContainer from "../common/SmallContainer";
 
 function ClientAbout() {
   return (

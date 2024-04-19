@@ -1,13 +1,13 @@
-import Container from "@/components/common/Container";
+import SmallContainer from "@/components/common/SmallContainer";
 import ClientFaq from "@/components/faq/ClientFaq";
 import React from "react";
 
 function FaqPage() {
   return (
     <section>
-      <Container>
+      <SmallContainer>
         <ClientFaq />
-      </Container>
+      </SmallContainer>
     </section>
   );
 }
