@@ -47,7 +47,7 @@ function CategoryForm({ category }: CategoryFormProps) {
 
       router.back();
     } catch (error) {
-      toast.error("Falha ao criar/modificar endereço.");
+      toast.error("Falha ao criar/modificar categoria.");
     }
   };
 
@@ -68,7 +68,7 @@ function CategoryForm({ category }: CategoryFormProps) {
         size="lg"
         radius="sm"
         classNames={{
-          input: `placeholder:text-content2 antialiased`,
+          input: `placeholder:text-content3 antialiased`,
         }}
       />
 

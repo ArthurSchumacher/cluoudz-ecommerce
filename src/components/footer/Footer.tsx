@@ -4,12 +4,7 @@ import FooterList from "./FooterList";
 import * as queries from "@/queries";
 import { Link, Image } from "@nextui-org/react";
 import { paths } from "@/paths";
-import { MdFacebook } from "react-icons/md";
-import {
-  AiFillInstagram,
-  AiFillTwitterCircle,
-  AiFillYoutube,
-} from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
 
 async function Footer() {
   const categories = await queries.allCategories();

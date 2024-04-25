@@ -138,7 +138,7 @@ function ProductForm({ product, categories }: ProductFormProps) {
         size="lg"
         radius="sm"
         classNames={{
-          input: `placeholder:text-content2 antialiased`,
+          input: `placeholder:text-content3 antialiased`,
         }}
       />
 
@@ -222,7 +222,7 @@ function ProductForm({ product, categories }: ProductFormProps) {
             size="lg"
             radius="sm"
             classNames={{
-              input: `placeholder:text-content2 antialiased`,
+              input: `placeholder:text-content3 antialiased`,
             }}
           />
 
@@ -248,7 +248,7 @@ function ProductForm({ product, categories }: ProductFormProps) {
             size="lg"
             radius="sm"
             classNames={{
-              input: `placeholder:text-content2 antialiased`,
+              input: `placeholder:text-content3 antialiased`,
             }}
           />
 
@@ -280,7 +280,7 @@ function ProductForm({ product, categories }: ProductFormProps) {
           size="lg"
           radius="sm"
           classNames={{
-            input: `placeholder:text-content2 antialiased`,
+            input: `placeholder:text-content3 antialiased`,
           }}
         />
       ) : null}
