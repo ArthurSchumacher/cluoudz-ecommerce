@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import * as actions from "@/actions";
 
 const contactSchema = z.object({
   name: z.string().min(1, { message: "Este campo deve ser preenchido." }),
@@ -28,7 +29,6 @@ function ContactForm() {
   } = useForm<ContactFormFields>({
     resolver: zodResolver(contactSchema),
   });
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
     try {
@@ -38,8 +38,8 @@ function ContactForm() {
         subject: data.subject,
         message: data.message,
       };
-
-      router.back();
+      await actions.sendMail(emailDto);
+      toast.success("Sucesso ao enviar mensagem.");
     } catch (error) {
       toast.error("Falha ao enviar mensagem.");
     }

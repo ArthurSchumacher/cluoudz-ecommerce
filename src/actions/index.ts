@@ -30,3 +30,4 @@ export { updateProduct } from "./product/update-product";
 export { deleteProduct } from "./product/delete-product";
 
 export { adminUpdateOrderStatus } from "./order/admin-update-order-status";
+export { sendMail } from "./email/send-email";
