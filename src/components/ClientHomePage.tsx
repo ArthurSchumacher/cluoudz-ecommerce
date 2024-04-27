@@ -41,7 +41,7 @@ export default function ClientHomePage({
     if (category) {
       setTitle(category.name);
     }
-  });
+  }, []);
 
   const handleNextPage = () => {
     if (currentPage < products.totalPages) {
