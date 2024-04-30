@@ -103,7 +103,7 @@ function ProductForm({ product, categories }: ProductFormProps) {
           description: data.description,
           stock: data.stock,
           sale: isSelected.toString(),
-          discount: data.discount,
+          discount: data.discount ? data.discount : "0",
           categoryId: data.category,
         };
 
