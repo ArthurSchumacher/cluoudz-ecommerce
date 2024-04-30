@@ -36,12 +36,18 @@ export default function ClientHomePage({
   const pathname = usePathname();
 
   useEffect(() => {
-    setProducts(fetchedProducts);
-    setCurrentPage(Number(searchParams.page) || 1);
+    if (fetchedProducts.products.length === 0) {
+      setProducts({ products: [], totalPages: 0 });
+      setCurrentPage(0);
+    } else {
+      setProducts(fetchedProducts);
+      setCurrentPage(Number(searchParams.page) || 1);
+    }
+
     if (category) {
       setTitle(category.name);
     }
-  }, []);
+  }, [category, fetchedProducts, searchParams]);
 
   const handleNextPage = () => {
     if (currentPage < products.totalPages) {
@@ -84,7 +90,7 @@ export default function ClientHomePage({
             onPress={handlePrevPage}
             disabled={currentPage === 1}
             isIconOnly
-            className="flex items-center justify-center"
+            className="flex items-center justify-center cursor-pointer"
           >
             <FaChevronLeft size={15} />
           </Button>
@@ -98,7 +104,7 @@ export default function ClientHomePage({
             onPress={handleNextPage}
             disabled={currentPage === products.totalPages}
             isIconOnly
-            className="flex items-center justify-center"
+            className="flex items-center justify-center cursor-pointer"
           >
             <FaChevronRight size={15} />
           </Button>
