@@ -103,7 +103,7 @@ function ProductCard({ product }: ProductCardProps) {
           variant="ghost"
           color="primary"
         >
-          Add to Cart
+          Adicionar ao carrinho
         </Button>
       </div>
     </div>
