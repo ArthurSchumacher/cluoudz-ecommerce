@@ -39,7 +39,7 @@ const productSchema = z.object({
     .min(1, { message: "Este campo deve ser preenchido." }),
   price: z.string().min(1, { message: "Este campo deve ser preenchido." }),
   stock: z.string().min(1, { message: "Este campo deve ser preenchido." }),
-  discount: z.string().min(1, { message: "Este campo deve ser preenchido." }),
+  discount: z.string().optional(),
   category: z.string().min(1, { message: "Este campo deve ser preenchido." }),
   image: z.custom<any>(),
 });
@@ -81,10 +81,14 @@ function ProductForm({ product, categories }: ProductFormProps) {
         formData.append("price", data.price.toString());
         formData.append("stock", data.stock.toString());
         formData.append("sale", isSelected.toString());
-        formData.append("discount", data.discount.toString());
         formData.append("categoryId", data.category.toString());
-
         formData.append("image", data.image[0]);
+
+        if (data.discount) {
+          formData.append("discount", data.discount.toString());
+        } else {
+          formData.append("discount", "0");
+        }
 
         const req = await actions.createProduct(formData);
         if (req) {
